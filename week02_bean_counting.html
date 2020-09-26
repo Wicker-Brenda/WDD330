@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Bean Counting</title>
+  <script>
+//Bean Counting
+    function countChar(string, char) {
+        let count = 0;  
+        for(i = 0; i < string.length; i++) {
+            if(string[i] == char) {
+            count++;
+            }  
+        }
+        document.getElementById('mydiv').innerHTML = count;
+    }
+
+// function countBs(string) {
+//   return countChar(string, 'B');
+// }
+
+</script>
+<body>
+    <h1>Bean Counting</h1>
+    <section></section>
+        Enter a string: <input id='myString'></input>
+        Character to search for: <input id='myChar'></input>
+        <button onclick="countChar(document.getElementById('myString').value, 
+            document.getElementById('myChar').value)">Search String</button>
+    </section>
+    <div id='mydiv'></div>
+</body>

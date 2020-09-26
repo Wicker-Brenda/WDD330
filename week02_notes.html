@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="with=device-width, initial-scale=1.0" />
+  <title>Week 2 Notes</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js"></script>
+ </head>
+
+ <body>
+  <h1>Week 2 Notes</h1>
+  <h2>Javascript: Novice to Ninja Chapters 2-4 </h2>
+  <ul>
+      <li>Primitive data types are: strings, symbols, numbers, Booleans, undefined and null. Non-primitives are a type of object: arrays, functions, objects.</li>
+      <li>Declare variables using let or const, not var. Points to values stored in memory, more than one variable may point to the same value.</li>
+      <li>Be very explicit about data types of values, if change is needed do it manually- don't rely on type conversion which behaves inconsistently.</li>
+      <li>Symbols have unique immutable values.</li>
+      <li>Nine falsy values: "", '', ``, 0, -0, Nan, false, null, undefined.</li>
+      <li>Best way to create an array: const myArray = [];</li>
+      <li>Array delete operator will remove value but leave space it occupied as undefined.</li>
+      <li>Array properties and methods: length property is mutable. pop() method returns last item of array and removes it. shift() method returns and removes first item of array. 
+          push() method appends new value to end of array. unshift() method appends new value to beginning of array. concat() method creates another array combining arrays- original 
+          arrays unchanged. join() method turns array into string with all items separated by default commas, can place another separate in parentheses. slice() method creates subarray 
+          from 2 positions placed in parentheses- non-destructive as no items are removed from original array. splice() method removes items from array and inserts new items in their 
+          place- destructive- (beginning positions, how many to remove, replacement values). reverse() method changes order of array permanently. sort() method permanently changes 
+          order alphabetically- numbers sorted by first digit! indexOf() method returns index of first instance of that value in array, or -1 if not in array. includes() method returns 
+          boolean indicating presence of value, can indicate which index to start search from.  </li>
+      <li>Spread operator (new to ES6): place three dots in front of an array (...myArray) to spread out the elements of that array. Can also flatten Multidimensional arrays, so all 
+          values are on the same level in the array.</li>
+      <li>Multidimensional (nested) arrays: access values with 2 indices, one each to refer to the item's place in outer and inner arrays</li>
+      <li>Sets (new to ES6) = ordered lists of non-duplicate values, use new operator and Set() constructor. Use add() method to add separate words, size() method to find number of values, 
+          has() method to check if a value is in a set- returns a boolean. There is no index notation for inspecting individual entries. Use delete() method to remove a value, clear() method 
+          to remove all values. Convert set to an array by placing it inside array literal and using spread operator: const myArray = [...set]; 
+          Or use Array.from() method: const myArray = Array.from(set);. Weak sets will garbage collect references to objects that no longer exist, must manually create: const weak = new WeakSet(); 
+      </li>
+      <li>Maps (new to ES6) =  ordered lists of key-value pairs. Methods: set() adds key-value pair to map, get() looks up a value, has() checks if a key is in a map, delete() removes 
+          key-value pair from map- specify key to be removed. Size property returns number of key-value pairs in map. Use spread operator or Array.from() method to convert map into nested 
+          array. Weak maps work like weak sets.</li>
+      <li>Logic- control flow of program using if and else statements. Ternary operator ? format: condition ? (code if true) : (code if false);</li>
+      <li>Switch statment can replace multiple if and else statements.</li>
+      <li>While loop repeats a block of code while condition is still true. Do ... while loop has condition after block of code, so will always run at least once.   </li>
+      <li>For loop also repeats while condition is true- clearest loop as all details are in one place, and out of block of code. For loops can be nested.</li>
+      <li>For-of loops can be used to iterate over arrays, maps, and sets. </li>
+      <li>Functions are defined using a function declaration or by creating a function expression (assigning an anonymous function to a variable).</li>
+      <li>Arrow functions (new to ES6) are shorthand anonymous functions, best for one line. const square = x => x*x; Multiple parameters go in parentheses, no parameters use empty parentheses. </li>
+      <li>Functions always return a value; undefined is default. Invoke a function: name(); </li>
+      <li>Parameters are values a function needs and are set when the function is defined. Arguments are values passed to the function when it is invoked.</li>
+      <li>Rest operator (new to ES6) deals with multiple arguments by creating an array of arguments available inside the body of the function. Place 3 dots in front of the last parameter 
+          in a function declaration, which will collect all the arguments entered into an array: function rest(...args) {return args;} Can use for-of loop to iterate over each value given as an argument.</li>
+      <li>Default parameters are plugged in if none is passed as an argument. Should only come after non-default parameters. function hello(name='World') { console.log('Hello ${name}!'); }</li>
+      <li>Hoisting: Function declarations are hoisted to the top of the scope so can be invoked before they are defined. Function expressions cannot be invoked until after they are defined. 
+          Variable declarations using var keyword are hoisted to the top of the current scope, BUT variable assignment is not hoisted and will return undefined until the assignment is made. 
+          Better practice is to use const and let to declare variables at the beginning of a block. 
+      </li>
+      <li>Callbacks are functions provided as an argument to another function.</li> 
+
+</ul>
+ </body>
+
+ </html>
