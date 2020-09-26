@@ -1,7 +1,7 @@
 <script>
 
 /* dynamically created links for index page */
-const links = [
+{/* const links = [
   {label: 'Week 1 Notes', url: 'week01_notes.html', },
   {label: 'Week 2 Notes', url: 'week02_notes.html', },
 
@@ -15,6 +15,6 @@ links.ForEach(link => {
   a.innerText = link.label;
   li.appendChild(a);
   ol.appendChild(li);
-});
+}); */}
 
 </script>
