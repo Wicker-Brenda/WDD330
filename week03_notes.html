@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="with=device-width, initial-scale=1.0" />
+  <title>Week 3 Notes</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js"></script>
+ </head>
+
+ <body>
+  <h1>Week 3 Notes</h1>
+  <h2>Javascript: Novice to Ninja Chapters 5-7 </h2>
+  <ul>
+      <li>Functions stored in object properties are called methods.</li>
+      <li>Methods allow objects to "act" like object.doSomething().</li>
+      <li>"this" keyword can be used to access information stored in objects. Better than referencing it by outer variable, because will still access 
+          correct information even if original object is overwritten. Not bound, value is evaluated during the run-time and does not depend on where the method was declared, 
+          but on what object is "before the dot".</li>
+      <li>Arrow functions have no "this", references to "this" will go to outer normal function.</li>
+      <li>An object in Javascript is a self-contained set of related values and functions. An object literal is created quickly, w/out defining a class, 
+          by wrapping all properties and methods in curly braces. Example of empty object assigned to variable: const variable = {}; </li>
+      <li>All objects are mutable when a program is running, even if declared using const.</li>
+      <li>Access properties and methoeds with dot notation, brackets (for non-standard names, or for evaluating an expression to use as the property key).  </li>
+      <li>ES6- create objects with computed property keys. </li>
+      <li>Objects can be used as parameters to functions- arguments can then be entered in any order, or omitted.</li>
+      <li>Use 'for in' loop to loop through all of an object's properties and methods. Use Object.keys() to return keys, Object.values() to return values, and Object.entries() to 
+          return key-value pairs.</li>
+      <li>Nested objects have objects inside other objects.</li>
+      <li>JSON- portable data format that uses Javascript object literals to exhange information, see json.org. parse() takes a string from JSON format and returns a Javascript object. 
+          stringify() takes a Javascript object and returns a string of JSON data- methods are not permitted values and will be ignored.
+      </li>
+      <li>Math Object gives access to some mathematical constants, and can be used to perform mathematical calculations. See https://www.w3schools.com/js/js_math.asp for a list of 
+          Math Object Methods.
+      </li>
+      <li>Date Object can be used to create date objects. Use getter methods to access information about a date object, and setter methods to change information in a date object. 
+          Remember that January = 0. Use momentjs.com as a resource to figure out dates and timezones.</li>
+      <li>Regex Object can create regular expressions, which can be used to search a string for a match to that pattern. Test that your regular expression does what you think it does with 
+          https://www.regextester.com/ or https://regex101.com/</li>
+      <li>Document Object Model (DOM) represents a page of html as a tree of nodes. Access elements on a page with document.getElementById(), document.getElementByClassName(), 
+          document.getElementsByTagNames(), and document.querySelector(). </li>
+      <li>Navigate around the DOM tree with parentNode(), previousSibling(), nextSibling(), childNodes(), and children().</li>
+      <li>Use getAttribute() and setAttribute() to access and update an element's attributes.</li>
+      <li>Create dynamic markup with createElement() and createTextNode().</li>
+      <li>Add markup to the page with appendChild() and insertBefore(). Replace elements with replaceChild(), and remove with removeChild().</li>
+      <li>The innerHTML property can be used to insert raw HTML directly into the DOM.</li>
+      <li>Change the CSS properties of an element by accessing the style property. Can be done from the DOM, but it is better to keep it in the separate stylesheet.</li>
+      <li>Events = when a user interacts with a web page (mouse, keyboard, & touch). Event listeners attached to an element invoke a callback function when the event occurs. The 
+          event object is passed to the callback function as an argument, and contains properties and methods relating to the event.</li>
+      <li>Remove an even with removeEventListener().</li>
+      <li>Prevent default behavior of events with preventDefault(), but not recommended.</li>
+      <li>Event propagation = the order events fire on each element.</li>
+      <li>Event delegation = an event listener is added to a parent element to capture events happening to children elements.</li>
+      <li>Code example: <a href="week03_array_cardio.html">Array Cardio</a></li>   
+</ul>
+ </body>
+
+ </html>
