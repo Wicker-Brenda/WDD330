@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        section {
+            text-align: center;
+        }
+        .board {
+            margin: auto;
+            width: 320px;
+            height: 320px;
+            border-collapse: collapse; 
+        }
+        td,
+        tr {
+            width: 33.3%;
+            height: 33.3%;
+        }
+        tr {
+            border-bottom: 3px solid;
+        }
+        td {
+            border-right: 3px solid;
+            font-size: 5em;
+            text-align: center;
+        }
+        .board tr:last-child {
+            border-bottom: 0;
+        }
+        .board td:last-child {
+            border-right: 0;            
+        }
+
+
+    </style>
+    <script>
+                
+        window.addEventListener('load', function(event) {
+            const board = document.querySelector('.board');
+            const reset = document.getElementById('reset');
+            console.log(board, "I'm hooking up the listeners");
+            board.addEventListener('click', makeMove);
+            reset.addEventListener('click', resetBoard);
+        })
+        
+        const player1 = 'X';
+        const player2 = 'O';
+        let player = player1;
+        
+        function makeMove(e) {
+            console.log(e.target);
+            e.target.innerHTML = player;
+            if (player === player1) player = player2;
+            else player = player1;            
+        }
+
+        function resetBoard() {
+            const board = document.querySelector('.board');
+            console.dir(board); //output the list of object properties in the console
+            for (let i = 0; i < board.rows.length; i++) {
+                let row = board.rows[i];
+                for (let j = 0; j < row.cells.length; j++) {
+                    row.cells[j].innerHTML = '';
+                }
+            }
+        }
+        
+        
+        // game logic would include:
+        // const winner = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]];
+        // let firstPlayer = [], secondPlayer = [], count = 0;
+                      
+    </script>
+
+</head>
+<body>
+    <section>
+        <h1>Tic Tac Toe</h1>
+        <div class="gameBoard"></div>
+            <table class="board">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>    
+            </table>    
+              
+ 
+        </div>
+        <!-- <h2 class="gameStatus"></h2> -->
+                
+        <button id="reset">Reset</button>
+    </section>    
+        
+</body>
+
+</html>

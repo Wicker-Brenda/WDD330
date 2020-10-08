@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="with=device-width, initial-scale=1.0" />
+  <title>Week 4 Notes</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js"></script>
+ </head>
+
+ <body>
+  <h1>Week 4 Notes</h1>
+  <h2>Javascript: Novice to Ninja Chapters 8, 12, part of 15 </h2>
+  <ul>
+      <li>Use forms to enter data into the browser. Forms contain a form element and a variety of controls for different kinds of information. 
+          The input fields can be populated with information that is processed once the form is submitted.</li>
+      <li>HTML5 has form attributes, the action to be performed when the form is submitted, such as action, target, method, etc. 
+            See https://www.w3schools.com/html/html_forms_attributes.asp </li>    
+      <li>HTML5 has a large number of input types implemented in modern browsers, such as button, checkbox, email, select (drop-down lists), hidden, radio, etc. 
+          See https://www.w3schools.com/html/html_form_input_types.asp</li>
+      <li>Reset button should be avoided, poor usability- to easy to accidently click and wipe out your data. </li>    
+      <li>Input element attributes include: value (specifies an initial value for the input field), readonly, disabled (unusable and un-clickable), placeholder, maxlength, required, etc. 
+          autofocus attribute gives focus to the element when the page loads. See https://www.w3schools.com/html/html_form_attributes.asp </li>    
+      <li>document.forms will return an HTML collection of all the forms on a page.</li>
+      <li>form.elements will return an HTML collection of all the elements contained withing a form.</li>
+      <li>Form Events: Forms have focus, blur, and change events that fire as a user interacts with the form. The submit event can intercept a form before it is submitted.</li>
+      <li>The value property of the form controls can be used to read or update information entered into a form.</li>
+      <li>Form Validation: best practice is to use both client-side and server side validation. 
+          Do not use Javascript to validate any data before it is saved to the database, just to improve the client experience and reduce requests back and forth to the server. 
+          HTML5 form validation API can be used to automatically validate a form at a basic level (add a required attribute), but error messages are inconsistent across browsers 
+          and difficult to style. Custom validation script is required for anything beyond basics.</li>
+      <li>Object Oriented Programming (OOP) uses objects that encapsulate their own properties and methods. Main concepts are: encapsulation, polymorphism, and inheritance.</li>
+      <li>Constructor functions can be used to create instances of objects. ES6 introduced class declarations (class keyword) that can be used instead of constructor functions.</li>
+      <li>Keyword this: inside constructor function or class declaration, this refers to the object returned by the function.</li>
+      <li>All instances of a class or constructor function inherit all the properties and methods of its prototype. The prototype is LIVE, new methods and properties are added to 
+          existing instances. (This can get messy!) </li>
+      <li>A prototype chain is used to find an available method. If an object lacks a method, Javascript checks up the chain to see if the prototype has it, and if not will check that function's 
+          prototype for it, and so on up the chain to the Object constructor function.</li>
+      <li>Private properties and methods can be created by defining variables using const and defining a function inside of a constructor function. Use getter and setter functions to access them.</li>
+      <li>'Monkey-patching' = adding methods to built-in objects by augmenting their prototypes. Only do with caution, can cause unexpected behavior in the way built-in objects work, 
+          especially as specifications change down the road.</li>
+      <li>Methods can be chained together and called in sequence if they return a reference to this. (format to put each new chain on a new line to make debugging easier)</li>
+      <li>Polymorphism allows objects to override shared methods with a more specific implementation.</li>
+      <li>The value of this is not retained inside nested functions, which causes errors. Fix by using that = this, using the bind(this) method, and using arrow functions.</li>    
+      <li>Methods can be borrowed from other objects. A mixin method can be used to add properties and methods from other objects without creating an inheritance chain. HIGHLY RECOMMENDED. With inheritance: 'You wanted a banana 
+          but what you got was a gorilla holding the banana and the entire jungle.' (Joe Armstrong). HOWEVER beware of copying by reference, creates a shallow copy that points to old object. 
+          Create your own mixin() function and copy() method, code examples on pp 484-485, 487. 
+      </li>
+      <li>To borrow array methods for array-like objects, use Array.from() or the spread operator [...variable] to turn an array-like object into an array.</li>  
+      <li>'Composition over inheritance' is a design pattern where objects are composed from small 'building-block' objects, consisting of single tasks or behaviors, used to create 
+          more complex objects. Objects DO NOT inherit all their properties and methods from a parent class. Excellent article about it: 
+          https://medium.com/javascript-scene/the-two-pillars-of-javascript-ee6f3281e7f3 </li>
+      <li>A module is a self-contained piece of code that provides functions and methods that can be used in other files and modules. Code in a module should have a single purpose, and group 
+          together functions with distinct functionality. </li>
+      <li>ES6 added support for modules, allowing code to be abstracted into their own self-contained files and imported into another file. Use export keyword in module file and import 
+          keyword in main file. </li>       
+      <li>Code example: <a href="week04_tic_tac_toe.html">Tic Tac Toe</a>. Team activity, including first stretch goal.</li>   
+</ul>
+ </body>
+
+ </html>
