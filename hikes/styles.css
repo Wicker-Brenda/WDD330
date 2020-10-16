@@ -1,0 +1,71 @@
+/* put in root style variables here */
+:root {
+    --brown: #331a00;
+    --gold: #ffeb99;
+}
+
+body {
+    margin: 0;
+    color: var(--brown);
+    background-color: var(--gold);
+    font-family: Alegreya Sans, Arial, sans-serif;
+
+} 
+
+.header {
+    background-color: var(--brown);
+    padding: 20px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: var(--gold);
+}
+
+h2 {
+    background-color: var(--brown);
+    padding: 5px;
+    text-align: center;
+}
+
+h3 {
+    padding-top: 25px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    float: left;
+    width: 50%;
+    padding: 30px;
+}
+
+button {
+    background-color: var(--brown);
+    padding: 10px;
+    margin: 10px;
+    color: var(--gold);
+    border: none;
+    border-radius: 8px;
+}
+
+.detail:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.hidden {
+    display: none;
+}
+
+@media screen and (max-width:600px) {
+    .column {
+      width: 100%;
+    }
+  }
+

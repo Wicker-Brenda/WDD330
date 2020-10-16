@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="with=device-width, initial-scale=1.0" />
+  <title>Week 5 Notes</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js"></script>
+ </head>
+
+ <body>
+  <h1>Week 5 Notes</h1>
+  <h2>Javascript: Novice to Ninja Chapter 10</h2>
+  <ul>
+      <li>Bugs will happen, look for them early in the process. Test, test, test.</li>
+      <li>Javascript has a strict mode, use the string 'use strict'; placed in a whole file or inside a single function. 
+          Recommended: place all your code inside a self-invoking function (inside parentheses) like this:
+      </li>    
+      <li>(function() { 'use strict'; // rest of your code // }());</li>
+      <li>Modules are in strict mode by default.</li>
+      <li>Linting tools help ensure your code follows good practice and conventions, and makes team work more consistent. A linting tool as a text-editor plug-in works well.</li>
+      <li>Feature detection checks whether a method is supported before calling it, avoiding throwing exceptions. Use an if statement to check it exists before calling it inside the 
+          if block.
+      </li>    
+      <li>The console and browser's built in debugging tool can be used interactively to find and fix bugs in code. Using console.log() aallows you to log the value of the variable at 
+          different stages of the program, but does not stop execution. List the position in the function as well as the value of the variable: console.log('In the if with ${variable}');. 
+          Console.trace() will log an interactive stack trace in the console. 
+      </li>
+      <li>Set breakpoints using debugger keyword, which pauses execution and allows you to see what the program is doing at that point. Hovering over a variable will show the value it holds 
+          at that point. Restart the program by pushing play to continue stepping through it to the next breakpoint, or completion. Remove all debugger keywords before publishing code!</li>
+      <li>An error object is created when an exception occurs, or can be created using a constructor function: const error = new Error('error message');</li>
+      <li>Error objects also include: RangeError (# outside of allowable range), ReferenceError (reference to an item that doesn't exist), SyntaxError (error in code syntax), 
+          TypeError (error in type of value used), URIError (problem with encoding or decoding the URI), Internal Error (non-standard error, thrown when an error occurs in the JavaScript engine, 
+          usually caused by too much recursion). All these error objects can be used as constructors to create custom error objects: const error = new RangeError('# is outside of range');
+      </li>    
+      <li>Exceptions can be thrown using the throw statement. It can be applied to any JavaScript expression, which will cause the program to stop. Best practice is to throw an error object, 
+          which is caught in a catch block. Ex: throw new Error('danger Will Robinson!');
+      </li>
+      <li>Exception Handling: Any code placed inside a try block will pass any error objects to a catch block when an error occrus. Any code inside a finally block will run whether or not 
+          an exception occurs.
+      </li>
+      <li>Test-driven development (TDD) is the practice of writing the tests your code should be able to pass BEFORE writing the code. It will initially fail. Then write the code until all the 
+          tests pass. Then refactor the code for simplicity, and test again. Restest and refactor every time a new feature is implemented.</li>
+      <li>Jest is a TDD framework that can be used to test your code. It can be installed as a text-editor plug-in. Create a separate test file in js to run tests in.</li>    
+            
+      <li>Code example: <a href="/hikes/index.html">Great Hikes</a></li>   
+</ul>
+ </body>
+
+ </html>
