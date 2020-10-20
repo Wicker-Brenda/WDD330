@@ -10,3 +10,19 @@ window.addEventListener("load", () => {
     myTodos.showCompletedTasks();
 });
 
+allBtn.addEventListener("click", () => {
+    myTodos.showTaskList();
+})
+
+activeBtn.addEventListener("click", () => {
+    myTodos.showActiveTasks();
+})
+
+completeBtn.addEventListener("click", () => {
+    myTodos.showCompletedTasks();
+})
+
+add.addEventListener("click", () => {
+    myTodos.addTodo();
+})
+

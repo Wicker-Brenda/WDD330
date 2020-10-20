@@ -1,5 +1,5 @@
 //array to hold todo list items
-let todoList = [];  //= null? let todoList [] = null?
+//let todoList = []; 
 
 let todo = [];
 
@@ -46,10 +46,8 @@ export default class Todos {
     constructor(elementId) {
         this.parentElement = document.getElementById(elementId); //ul id todos- in the constructor you should set a variable with the element our todo list will be built in
                 
-
 // in the constructor you should set the key we will use to read/write from localStorage
 
-        //add buttons here?
     } //end constructor
     //getter function to get all tasks
     getAllTasks() {  
@@ -57,6 +55,7 @@ export default class Todos {
     }
     //show tasks in the parentElement
     showTaskList() {
+        console.log("in showTaskList");
         this.parentElement.innerHTML = ''; //clear out anything already in the innerHTML 
         //use getter function to get the list
         renderTodoList(this.parentElement, this.getAllTasks());
@@ -85,6 +84,24 @@ export default class Todos {
         console.log(justCompleted);
         document.getElementById("total").innerHTML = justCompleted.length + " tasks left"; 
     }
+    //create a todo object based on input text, push it into the array, render it in the list
+    addTodo() {
+        let text_box = document.getElementById('myTask');
+        console.log("in addTodo");
+        const todo = {
+        id: new Date(),
+        content: text_box.value, //does this need to be a separate line?
+        completed: false 
+        };
+
+        dummyTasks.push(todo); //change to real array name
+        console.log(dummyTasks);
+        text_box.value = null;
+        this.showTaskList();
+
+    }
+
+    
 } //end class
 
 // In the Todo.js module, but not in the Todos class, create the following function
@@ -99,15 +116,9 @@ function saveTodo(task, key) { }
 // A todo should look like this: { id : timestamp, content: string, completed: bool }
 // Look at how this is done in the Note It app
 function renderTodoList(parent, tasks) { //parent is ul, tasks is the array being passed in
+    console.log("in renderTodoList");
     tasks.forEach(task => {
-      //search to check for active completed status
-    //   if(task.completed === false) { 
-    //     parent.appendChild(renderOneTask(task));
-    //   } 
-      //code to show only completed tasks: 
-      if(task.completed) { 
         parent.appendChild(renderOneTask(task));
-      }
     });
   }
 
@@ -132,6 +143,7 @@ function renderCompletedList(parent, tasks) {
 }
 
 function renderOneTask(task) {
+    console.log("in renderOneTask");
     const item = document.createElement("li");
     //item.myName = hike.name; //this was for styling, don't need?
     item.classList.add('task'); //do I need this?- only for CSS, remove if don't use it
@@ -165,22 +177,7 @@ function renderOneTask(task) {
 
 
 
-// //create a todo object based on input text and push it into the todoItems array
-// function addTodo(task) {
-//     let ul = document.querySelector('ul');
-//     let li = document.createElement('li');
-//     li.innerHTML = `<input type="checkbox"><label>${task}</label><span class="delete">X</span>`;
-//     ul.appendChild(li);
-//     document.querySelector('.taskList').style.display = 'block';
-//     const todo = {
-//         text,
-//         checked: false,
-//         id: Date.now(),
-//     };
 
-//     todoItems.push(todo);
-//     console.log(todoItems);
-// }
 
 // //get the form element
 // const form = document.querySelector('.js-form');
