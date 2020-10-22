@@ -9,7 +9,7 @@
   <script src="main.js?version=<?=filectime('main.js');?>" type="module"></script>
  </head>
 
- <body>
+  <body>
     <section class="wrapper">
         <h1>Todos</h1>
         <div class="taskList">

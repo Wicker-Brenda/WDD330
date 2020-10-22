@@ -1,10 +1,13 @@
+// import { readFromLS, writeToLS } from '*/.ls.js';
+// import {  } from '*/utilities.js';
+
 //array to hold todo list items
 //let todoList = []; 
 
-let todo = [];
+//let todo = [];
 
-//insert dummy data objects into array for testing
-let dummyTasks = [
+//change to empty array after testing
+let todoList = [
     {
         "id": new Date(),
         "content": "Dummy Task 1",
@@ -37,30 +40,48 @@ let dummyTasks = [
     },
 ]
 
-//print out values in dummyTask array objects
-dummyTasks.forEach((dummyTask)=>console.log(dummyTask.id,dummyTask.content,dummyTask.completed)); 
+//print out values in todoList array objects
+todoList.forEach((todoList)=>console.log(todoList.id,todoList.content,todoList.completed)); 
 
 
 //on load insert todo form into page
 export default class Todos {
-    constructor(elementId) {
+    constructor(elementId, key) {
         this.parentElement = document.getElementById(elementId); //ul id todos- in the constructor you should set a variable with the element our todo list will be built in
                 
 // in the constructor you should set the key we will use to read/write from localStorage
+        //set key here
+        this.myKey = 'todo';
 
+        //pull the whole array
     } //end constructor
+
+
+
     //getter function to get all tasks
-    getAllTasks() {  
-        return dummyTasks;  //chg this when using real data
+    getAllTasks() {
+        return todoList;  //chg this when using real data
     }
+
+    // //getter function using local storage
+    // getAllTasks(key) {  
+    //     if (todoList === null) {
+    //         //get from localstorage
+    //         todoList = readFromLS(key) || [];
+    //     }
+            
+    //     return todoList;
+    // }
+
     //show tasks in the parentElement
     showTaskList() {
         console.log("in showTaskList");
         this.parentElement.innerHTML = ''; //clear out anything already in the innerHTML 
         //use getter function to get the list
         renderTodoList(this.parentElement, this.getAllTasks());
+        this.addTaskListener();
         //show total tasks
-        document.getElementById("total").innerHTML = dummyTasks.length + " tasks left"; //change to real array
+        document.getElementById("total").innerHTML = todoList.length + " tasks left"; //change to real array
     }
     //show only active tasks in the parentElement
     showActiveTasks() {
@@ -68,8 +89,9 @@ export default class Todos {
         this.parentElement.innerHTML = ''; //clear out anything already in the innerHTML 
         //use getter function to get the list
         renderActiveList(this.parentElement, this.getAllTasks());
+        this.addTaskListener();
         //show total active tasks
-        let justActive = dummyTasks.filter(task => task.completed == false); //change to real array
+        let justActive = todoList.filter(task => task.completed == false); //change to real array
         console.log(justActive);
         document.getElementById("total").innerHTML = justActive.length + " tasks left"; 
     }
@@ -79,27 +101,76 @@ export default class Todos {
         this.parentElement.innerHTML = ''; //clear out anything already in the innerHTML 
         //use getter function to get the list
         renderCompletedList(this.parentElement, this.getAllTasks());
+        this.addTaskListener();
         //show total active tasks
-        let justCompleted = dummyTasks.filter(task => task.completed == true); //change to real array
+        let justCompleted = todoList.filter(task => task.completed == true); //change to real array
         console.log(justCompleted);
         document.getElementById("total").innerHTML = justCompleted.length + " tasks left"; 
     }
     //create a todo object based on input text, push it into the array, render it in the list
-    addTodo() {
+    addTodo() { //2 parameters? value of text box, and key?- or just key
         let text_box = document.getElementById('myTask');
         console.log("in addTodo");
         const todo = {
         id: new Date(),
-        content: text_box.value, //does this need to be a separate line?
+        content: text_box.value, 
         completed: false 
         };
 
-        dummyTasks.push(todo); //change to real array name
-        console.log(dummyTasks);
+        todoList.push(todo); 
+        writeToLS(key, todoList);
+        
+        console.log(todoList);
         text_box.value = null;
         this.showTaskList();
-
     }
+    //add Event Listener on ea li (could be on ul?)
+    addTaskListener() {
+      //loop through the children of the list and attach a listener to each
+      const childrenArray = Array.from(this.parentElement.children);
+      childrenArray.forEach(child => {
+        child.addEventListener('click', e => {
+          this.deleteOrCheck(e); 
+        });
+      });      
+    }
+
+    //put this function in the event listener, it decides which function to call
+    deleteOrCheck(e) {
+        console.log(e.target.className);
+        if(e.target.className == 'delete')
+          this.deleteTask(e);
+        else {
+            this.checkTask(e);
+        }  
+    }
+
+    //
+    checkTask(e) {
+        //e.target.classList.toggle('.checked'); //adds checked class if doesn't have it, or removes
+        const task = e.target.nextElementSibling; //get the text of the checked task 
+        console.log(e.target.checked);
+        if(e.target.checked){
+            task.style.textDecoration = "line-through";
+            //task.style.color = "#ff0000";
+          }else {
+            task.style.textDecoration = "none";
+            //task.style.color = "#2f4f4f";
+          }
+    }
+
+    deleteTask(e) {
+        //change view style to hidden- add classList
+        e.target.classList.add('.hidden');
+        //remove from array, change localstorage
+    }
+
+    // Find all the .delete buttons, then put a click event listener on each of them
+    // document.querySelectorAll('.delete').forEach(function(elem) {
+	//     elem.addEventListener('click', function() {
+	// 	    this.closest('.task').remove();
+    //     });    
+    //  });
 
     
 } //end class
@@ -148,35 +219,17 @@ function renderOneTask(task) {
     //item.myName = hike.name; //this was for styling, don't need?
     item.classList.add('task'); //do I need this?- only for CSS, remove if don't use it
     item.setAttribute('data-completed', task.completed); //use to make getting completed status for a specific task easier //do I need this?
-    item.innerHTML = `<div class="detail"><input type="checkbox"><label>${task.content}</label><span class="delete">X</span></div>`; //was ${task}, using content from array object
+    item.innerHTML = `<div class="detail">
+        <input type="checkbox">  
+        <label>${task.content}</label>
+        <button class="delete">X</button>
+        </div>`; 
     document.querySelector('.taskList').style.display = 'block'; //do I need this, should it be done in CSS
-    // const todo = {
-    //     text, //string from label- task
-    //     checked: false,
-    //     id: Date.now(),
-    // }; 
-    //create object and push into array  //  todoItems.push(todo); //change to array name
     return item;
   }
 
 
-// function renderTodoList(list, element) {
-//     let ul = document.querySelector('ul'); //element, ul  -- I don't think I need this line
-//     let li = document.createElement('li');
-//     li.innerHTML = `<input type="checkbox"><label>${task}</label><span class="delete">X</span>`;  
-//     ul.appendChild(li); //doing this in renderTodoList
-//     document.querySelector('.taskList').style.display = 'block'; //do I need this, should it be done in CSS
-//     const todo = {
-//         text, //string from label- task
-//         checked: false,
-//         id: Date.now(),
-//     };
-// }
-//  foreach todo in list, build a li element for the todo, and append it to element
-//@param {array} list The list of tasks to render to HTML @param {element} element The DOM element to insert our list elements into.
-
-
-
+//onchange="toggleCheckbox(this)" //possibly put in checkbox
 
 
 // //get the form element

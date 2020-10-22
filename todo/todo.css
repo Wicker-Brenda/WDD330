@@ -1,0 +1,47 @@
+/* put in root style variables here */
+/* :root { */
+    /* --brown: #331a00;
+    --gold: #ffeb99;
+} */
+
+/* include the padding and border in an element's total height and width */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Alegreya Sans, Arial, sans-serif;
+}
+
+.wrapper {
+    max-width: 900px;
+    //background-color: yellow;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    border: 1px;
+    padding: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    /* make list items unselectable
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+}
+
+.checked {
+    text-decoration: line-through;
+}
