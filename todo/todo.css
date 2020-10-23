@@ -42,6 +42,6 @@ li {
     user-select: none; */
 }
 
-.checked {
+li .checked {
     text-decoration: line-through;
 }

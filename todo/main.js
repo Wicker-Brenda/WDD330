@@ -5,9 +5,9 @@ const myTodos = new Todos('todos');
 
 //on page load, call the ______ method
 window.addEventListener("load", () => {
-    //myTodos.showTaskList();
+    myTodos.showTaskList();
     //myTodos.showActiveTasks();
-    myTodos.showCompletedTasks();
+    //myTodos.showCompletedTasks();
 });
 
 allBtn.addEventListener("click", () => {
@@ -25,4 +25,6 @@ completeBtn.addEventListener("click", () => {
 add.addEventListener("click", () => {
     myTodos.addTodo();
 })
+
+
 

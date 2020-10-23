@@ -9,32 +9,32 @@
 //change to empty array after testing
 let todoList = [
     {
-        "id": new Date(),
+        "id": 1, //Date.now(),
         "content": "Dummy Task 1",
         "completed": false 
     },
     {
-        "id": new Date(),
+        "id": 2, //Date.now(),
         "content": "Dummy Task 2",
         "completed": true 
     },
     {
-        "id": new Date(),
+        "id": 3, //Date.now(),
         "content": "Dummy Task 3",
         "completed": false 
     },
     {
-        "id": new Date(),
+        "id": 4, //Date.now(),
         "content": "Dummy Task 4",
         "completed": true 
     },
     {
-        "id": new Date(),
+        "id": 5, //Date.now(),
         "content": "Dummy Task 5",
         "completed": false 
     },
     {
-        "id": new Date(),
+        "id": 6, //Date.now(),
         "content": "Dummy Task 6",
         "completed": false 
     },
@@ -49,18 +49,24 @@ export default class Todos {
     constructor(elementId, key) {
         this.parentElement = document.getElementById(elementId); //ul id todos- in the constructor you should set a variable with the element our todo list will be built in
                 
-// in the constructor you should set the key we will use to read/write from localStorage
-        //set key here
-        this.myKey = 'todo';
+    //set the key to use to read/write from localStorage
+    this.key = key;
 
         //pull the whole array
     } //end constructor
 
-
-
     //getter function to get all tasks
     getAllTasks() {
-        return todoList;  //chg this when using real data
+        console.log("in getAllTasks");
+        //get the todoList from local storage
+        //todoList = readFromLS(this.key);
+        
+        //create an empty array if there is no todo list
+        // if (todoList === null) {
+        //     todoList = [];
+        // }
+        console.log(todoList);
+        return todoList;  //chg this when using real data, use local storage, return null
     }
 
     // //getter function using local storage
@@ -109,20 +115,25 @@ export default class Todos {
     }
     //create a todo object based on input text, push it into the array, render it in the list
     addTodo() { //2 parameters? value of text box, and key?- or just key
-        let text_box = document.getElementById('myTask');
         console.log("in addTodo");
-        const todo = {
-        id: new Date(),
-        content: text_box.value, 
-        completed: false 
-        };
+        const text_box = document.getElementById('myTask');
+        const content = text_box.value;
+        //add task only if there is content:
+        if (content.length > 0) {
+            const todo = {
+            id: Date.now(),
+            content: text_box.value, 
+            completed: false 
+            };
 
-        todoList.push(todo); 
-        writeToLS(key, todoList);
-        
-        console.log(todoList);
-        text_box.value = null;
-        this.showTaskList();
+            todoList.push(todo); 
+            //writeToLS(key, todoList);
+            
+            console.log(todoList);
+            
+            this.showTaskList(); //refresh the view
+        }
+        text_box.value = null; //empty the text field for next input
     }
     //add Event Listener on ea li (could be on ul?)
     addTaskListener() {
@@ -130,38 +141,72 @@ export default class Todos {
       const childrenArray = Array.from(this.parentElement.children);
       childrenArray.forEach(child => {
         child.addEventListener('click', e => {
-          this.deleteOrCheck(e); 
+          if (e.target.className == 'delete') {
+            this.deleteTask(e, child.id);
+          }
+          else {
+            this.checkTask(e, child.id);      
+          }
+          
+            //this.deleteOrCheck(e); //, todoList.id
         });
+        // child.checkbox.addEventListener('click', e => {
+        //     this.checkTask(e); 
+        //   });
       });      
     }
 
-    //put this function in the event listener, it decides which function to call
-    deleteOrCheck(e) {
-        console.log(e.target.className);
-        if(e.target.className == 'delete')
-          this.deleteTask(e);
-        else {
-            this.checkTask(e);
-        }  
-    }
-
     //
-    checkTask(e) {
+    checkTask(e, id) {
         //e.target.classList.toggle('.checked'); //adds checked class if doesn't have it, or removes
-        const task = e.target.nextElementSibling; //get the text of the checked task 
+        console.log(id);
+        const task = e.currentTarget; //get the text of the checked task 
         console.log(e.target.checked);
+
+        //todo: put this in render item
+        //todo: search todo list for id
+        //todo: found item.completed = e.target.checked
+        //todo: deal with undefined check state
+
+        //test toggle item in array
+        const foundItem = todoList.find(x => { return (x['id']-id) == 0 });
+        console.log(JSON.stringify(foundItem));
+        foundItem.completed = !foundItem.completed;
+        
         if(e.target.checked){
             task.style.textDecoration = "line-through";
             //task.style.color = "#ff0000";
-          }else {
+        } else {
             task.style.textDecoration = "none";
             //task.style.color = "#2f4f4f";
           }
+
+
+          //todoList.push(todo); 
+          //writeToLS(key, todoList);
+          
+          console.log(todoList);
+          
+          this.showTaskList(); //refresh the view  
     }
 
-    deleteTask(e) {
+    deleteTask(e, id) {
+        console.log(e.target.className, id);
+        const index = todoList.findIndex(x => { return (x['id']-id) == 0 });
+        console.log(JSON.stringify(index));
+        todoList.splice(index, 1);
+        
+
+        //const id = id;
+        // todoList.id
+        // todoList.splice() 
+        const li = e.target.parentNode;
+        console.log(li);
+
+        this.showTaskList(); //refresh the view  
+
         //change view style to hidden- add classList
-        e.target.classList.add('.hidden');
+        //e.target.classList.add('.hidden');- NO
         //remove from array, change localstorage
     }
 
@@ -218,12 +263,14 @@ function renderOneTask(task) {
     const item = document.createElement("li");
     //item.myName = hike.name; //this was for styling, don't need?
     item.classList.add('task'); //do I need this?- only for CSS, remove if don't use it
+    item.id = task.id;
     item.setAttribute('data-completed', task.completed); //use to make getting completed status for a specific task easier //do I need this?
     item.innerHTML = `<div class="detail">
-        <input type="checkbox">  
+        <input type="checkbox" ${task.completed ? 'checked' : ''}>  
         <label>${task.content}</label>
         <button class="delete">X</button>
         </div>`; 
+        
     document.querySelector('.taskList').style.display = 'block'; //do I need this, should it be done in CSS
     return item;
   }
