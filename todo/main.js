@@ -26,5 +26,11 @@ add.addEventListener("click", () => {
     myTodos.addTodo();
 })
 
+// myTask.addEventListener("keydown", () => {
+//     if (key === "Enter") {
+//         myTodos.addTodo();
+//         //e.preventDefault();
+//     }
+// });
 
 

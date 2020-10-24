@@ -1,47 +1,61 @@
-// import { readFromLS, writeToLS } from '*/.ls.js';
+//import { readFromLS, writeToLS } from '.*/ls.js';
 // import {  } from '*/utilities.js';
 
-//array to hold todo list items
-//let todoList = []; 
+// read a value from local storage and parse it as JSON @param {string} key The key under which the value is stored under in LS
+// @return {array} The value as an array of objects /
+export function readFromLS(key) { 
+    return JSON.parse(localStorage.getItem(key)); 
+  }
 
-//let todo = [];
+
+
+// write an array of objects to local storage under the provided key @param {string} key The key under which the value is stored under in LS
+// * @param {array} data The information to be stored as an array of objects. Must be serialized.
+
+// */
+  export function writeToLS(key, data) { 
+       localStorage.setItem(key, JSON.stringify(data));  
+  }
+
+//array to hold todo list items
+let todoList = []; 
 
 //change to empty array after testing
-let todoList = [
-    {
-        "id": 1, //Date.now(),
-        "content": "Dummy Task 1",
-        "completed": false 
-    },
-    {
-        "id": 2, //Date.now(),
-        "content": "Dummy Task 2",
-        "completed": true 
-    },
-    {
-        "id": 3, //Date.now(),
-        "content": "Dummy Task 3",
-        "completed": false 
-    },
-    {
-        "id": 4, //Date.now(),
-        "content": "Dummy Task 4",
-        "completed": true 
-    },
-    {
-        "id": 5, //Date.now(),
-        "content": "Dummy Task 5",
-        "completed": false 
-    },
-    {
-        "id": 6, //Date.now(),
-        "content": "Dummy Task 6",
-        "completed": false 
-    },
-]
+// let todoList = [
+//     {
+//         "id": 1, //Date.now(),
+//         "content": "Dummy Task 1",
+//         "completed": false 
+//     },
+//     {
+//         "id": 2, //Date.now(),
+//         "content": "Dummy Task 2",
+//         "completed": true 
+//     },
+//     {
+//         "id": 3, //Date.now(),
+//         "content": "Dummy Task 3",
+//         "completed": false 
+//     },
+//     {
+//         "id": 4, //Date.now(),
+//         "content": "Dummy Task 4",
+//         "completed": true 
+//     },
+//     {
+//         "id": 5, //Date.now(),
+//         "content": "Dummy Task 5",
+//         "completed": false 
+//     },
+//     {
+//         "id": 6, //Date.now(),
+//         "content": "Dummy Task 6",
+//         "completed": false 
+//     },
+// ]
 
 //print out values in todoList array objects
-todoList.forEach((todoList)=>console.log(todoList.id,todoList.content,todoList.completed)); 
+//todoList.forEach((todoList)=>console.log(todoList.id,todoList.content,todoList.completed)); 
 
 
 //on load insert todo form into page
@@ -59,25 +73,15 @@ export default class Todos {
     getAllTasks() {
         console.log("in getAllTasks");
         //get the todoList from local storage
-        //todoList = readFromLS(this.key);
+        todoList = readFromLS(this.key);
         
         //create an empty array if there is no todo list
-        // if (todoList === null) {
-        //     todoList = [];
-        // }
+        if (todoList === null) {
+            todoList = [];
+        }
         console.log(todoList);
         return todoList;  //chg this when using real data, use local storage, return null
     }
-
-    // //getter function using local storage
-    // getAllTasks(key) {  
-    //     if (todoList === null) {
-    //         //get from localstorage
-    //         todoList = readFromLS(key) || [];
-    //     }
-            
-    //     return todoList;
-    // }
 
     //show tasks in the parentElement
     showTaskList() {
@@ -87,7 +91,8 @@ export default class Todos {
         renderTodoList(this.parentElement, this.getAllTasks());
         this.addTaskListener();
         //show total tasks
-        document.getElementById("total").innerHTML = todoList.length + " tasks left"; //change to real array
+        document.getElementById("total").innerHTML = todoList.length + " tasks left";
+           
     }
     //show only active tasks in the parentElement
     showActiveTasks() {
@@ -127,7 +132,7 @@ export default class Todos {
             };
 
             todoList.push(todo); 
-            //writeToLS(key, todoList);
+            writeToLS(this.key, todoList);
             
             console.log(todoList);
             
@@ -147,12 +152,7 @@ export default class Todos {
           else {
             this.checkTask(e, child.id);      
           }
-          
-            //this.deleteOrCheck(e); //, todoList.id
         });
-        // child.checkbox.addEventListener('click', e => {
-        //     this.checkTask(e); 
-        //   });
       });      
     }
 
@@ -163,16 +163,12 @@ export default class Todos {
         const task = e.currentTarget; //get the text of the checked task 
         console.log(e.target.checked);
 
-        //todo: put this in render item
-        //todo: search todo list for id
-        //todo: found item.completed = e.target.checked
-        //todo: deal with undefined check state
-
-        //test toggle item in array
+        //find item in array and toggle completed status
         const foundItem = todoList.find(x => { return (x['id']-id) == 0 });
         console.log(JSON.stringify(foundItem));
         foundItem.completed = !foundItem.completed;
-        
+    
+        //change style immediately... do I need this?
         if(e.target.checked){
             task.style.textDecoration = "line-through";
             //task.style.color = "#ff0000";
@@ -183,7 +179,7 @@ export default class Todos {
 
 
           //todoList.push(todo); 
-          //writeToLS(key, todoList);
+          writeToLS(this.key, todoList);
           
           console.log(todoList);
           
@@ -195,27 +191,15 @@ export default class Todos {
         const index = todoList.findIndex(x => { return (x['id']-id) == 0 });
         console.log(JSON.stringify(index));
         todoList.splice(index, 1);
-        
 
-        //const id = id;
-        // todoList.id
-        // todoList.splice() 
         const li = e.target.parentNode;
         console.log(li);
 
+        writeToLS(this.key, todoList);
+
         this.showTaskList(); //refresh the view  
 
-        //change view style to hidden- add classList
-        //e.target.classList.add('.hidden');- NO
-        //remove from array, change localstorage
     }
-
-    // Find all the .delete buttons, then put a click event listener on each of them
-    // document.querySelectorAll('.delete').forEach(function(elem) {
-	//     elem.addEventListener('click', function() {
-	// 	    this.closest('.task').remove();
-    //     });    
-    //  });
 
     
 } //end class
@@ -230,12 +214,13 @@ function saveTodo(task, key) { }
 
 
 // A todo should look like this: { id : timestamp, content: string, completed: bool }
-// Look at how this is done in the Note It app
+
 function renderTodoList(parent, tasks) { //parent is ul, tasks is the array being passed in
     console.log("in renderTodoList");
     tasks.forEach(task => {
         parent.appendChild(renderOneTask(task));
     });
+
   }
 
 function renderActiveList(parent, tasks) {
@@ -264,19 +249,32 @@ function renderOneTask(task) {
     //item.myName = hike.name; //this was for styling, don't need?
     item.classList.add('task'); //do I need this?- only for CSS, remove if don't use it
     item.id = task.id;
-    item.setAttribute('data-completed', task.completed); //use to make getting completed status for a specific task easier //do I need this?
-    item.innerHTML = `<div class="detail">
+    //item.style.textDecoration = "${task.completed ? 'line-through' : 'none'}";
+   // item.classList.add(task.completed ? "complete" : ""); 
+    //console.log(item.style);
+    //item.setAttribute('data-completed', task.completed); //use to make getting completed status for a specific task easier //do I need this?
+    item.innerHTML = `<div class="${task.completed ? 'checked' : ''}">
         <input type="checkbox" ${task.completed ? 'checked' : ''}>  
         <label>${task.content}</label>
-        <button class="delete">X</button>
+        <button class="delete">x</button>
         </div>`; 
         
-    document.querySelector('.taskList').style.display = 'block'; //do I need this, should it be done in CSS
+    //document.querySelector('.taskList').style.display = 'block'; //do I need this, should it be done in CSS
     return item;
   }
 
+//   task.style.textDecoration=${task.completed ? 'line-through' : ''}
 
-//onchange="toggleCheckbox(this)" //possibly put in checkbox
+//   if(e.target.checked){
+//     task.style.textDecoration = "line-through";
+//     //task.style.color = "#ff0000";
+// } else {
+//     task.style.textDecoration = "none";
+//     //task.style.color = "#2f4f4f";
+//   }
+
+
+  //onchange="toggleCheckbox(this)" //possibly put in checkbox
 
 
 // //get the form element

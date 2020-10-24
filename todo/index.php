@@ -6,28 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Todo App</title>
   <link rel="stylesheet" href="todo.css" />
-  <script src="main.js?version=<?=filectime('main.js');?>" type="module"></script>
+ 
  </head>
 
   <body>
     <section class="wrapper">
         <h1>Todos</h1>
         <div class="taskList">
-            <ul id='todos'>
-                <li><input type="checkbox"><label>Dummy task 1</label><span class="delete">X</span></li>
-            </ul>
+            <ul id='todos'></ul>
+        </div>     
             <div id="footer">
-                <div id="total"></div>
-                <button id="allBtn">All</button>
-                <button id="activeBtn">Active</button>
-                <button id="completeBtn">Completed</button>
+                <div id="total" class="total"></div>
+                <button id="completeBtn" class="filters">Completed</button>
+                <button id="activeBtn" class="filters">Active</button>
+                <button id="allBtn" class="filters">All</button>
             </div>
-        </div>    
+           
         <div id="inputArea"> 
-            <input type="text" id="myTask">
+            <input type="text" id="myTask" class="my-task" placeholder="Type a task and click the + button...">
             <button id="add" class="addBtn">+</button>  
         </div>
     </section>
+
+    <script src="main.js?version=<?=filectime('main.js');?>" type="module"></script>
+
  </body>
 
  </html>

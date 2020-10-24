@@ -13,5 +13,5 @@
 
 // */
    export function writeToLS(key, data) { 
-        localStorage.setItem(key, JSON.stringify(data));  //change for an array
+        localStorage.setItem(key, JSON.stringify(data));  
    }
