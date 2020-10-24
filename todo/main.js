@@ -6,8 +6,6 @@ const myTodos = new Todos('todos');
 //on page load, call the ______ method
 window.addEventListener("load", () => {
     myTodos.showTaskList();
-    //myTodos.showActiveTasks();
-    //myTodos.showCompletedTasks();
 });
 
 allBtn.addEventListener("click", () => {
@@ -26,11 +24,12 @@ add.addEventListener("click", () => {
     myTodos.addTodo();
 })
 
-// myTask.addEventListener("keydown", () => {
-//     if (key === "Enter") {
-//         myTodos.addTodo();
-//         //e.preventDefault();
-//     }
-// });
+myTask.addEventListener("keydown", function (e) {
+    //"Enter" key is 13
+    if (e.keyCode === 13) {
+        myTodos.addTodo();
+        // e.preventDefault();
+    }
+});
 
 

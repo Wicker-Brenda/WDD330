@@ -10,16 +10,12 @@
 
 }
 
-/* include the padding and border in an element's total height and width */
-/* * {
-    box-sizing: border-box;
-} */
-
 html,
 body {
     margin: 0;
     padding: 0;
 }
+
 button {
     margin: 0;
     padding: 10px;
@@ -31,9 +27,15 @@ button {
     font-weight: inherit;
     color: inherit;
 }
+
+button:hover {
+    font-weight: bold;
+}
+
 button, input[type="checkbox"] {
     outline: none;
 }
+
 body {
     font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.4em;
@@ -43,7 +45,8 @@ body {
     max-width: 550px;
     margin: 0 auto;
     font-weight: 300;
-    }
+}
+
 /* .hidden {
     display: none;
 }     */
@@ -55,11 +58,26 @@ body {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
     0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
-.wrapper input::input-placeholder {
-    /* font-style: italic;
-    font-weight: 300; */
+
+/* style placeholder across browsers: */
+.input-area ::-webkit-input-placeholder { /* Chrome and Safari */
     color: var(--lightgray);
-    }
+ }
+ .wrapper :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: var(--lightgray);
+    opacity: 1;
+ }  
+ .wrapper ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: var(--lightgray);
+    opacity: 1;
+ }  
+ .wrapper :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--lightgray);
+ }  
+ .wrapper ::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--lightgray);
+ }
+
 h1 {
     position: absolute;
     top: -155px;
@@ -70,6 +88,7 @@ h1 {
     text-transform: capitalize;
     color: var(--softblack);
 }
+
 .my-task {
     position: relative;
     margin: 0;
@@ -87,6 +106,7 @@ h1 {
     background: rgba(0, 0, 0, 0.003);
     box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
 }
+
 .addBtn {
     font-size: 30px;
     position: absolute;
@@ -132,36 +152,7 @@ li:last-child {
 /* .delete:hover {
     color: var(--gray);
 } */
-/* .checked input[type="checkbox"]:after {
-    border: 1px solid #166B94;
-    border-radius: 3px;
-    color: #fff;
-    content: "";
-    display: block;
-    height: 16px;
-    line-height: 16px;
-    position: absolute;
-    text-align: center;
-    visibility: visible;
-    width: 16px;
-}
-.checked input[type=checkbox]:checked:after  {
-    border: 1px solid #979797;
-    color: #979797;
-    content: "✓";
-    font-size: 25px;
-    color: green;
-} */
-/* .taskList li .task {
-    text-align: center;
-    height: 20px;
-}     */
-    /* auto, since non-WebKit browsers doesn't support input styling */
-    /* position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
-} */
+
 .taskList li label {
     white-space: pre-line;
     word-break: break-all;
