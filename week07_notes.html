@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="with=device-width, initial-scale=1.0" />
+  <title>Week 7 Notes</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js"></script>
+ </head>
+
+ <body>
+  <h1>Week 7 Notes</h1>
+  <h2>Javascript: Novice to Ninja Chapters 11, 13</h2>
+  <ul>
+      <li>Functions have built in properties (.displayName, .length, .name) and can have custom properties added.</li>
+      <li>Use call() and apply() methods to invoke a function with the value of <b>this</b> bound to an object that is provided as the first argument. The arguments of the apply()
+    method are provided as an array, even if there is only one argument.</li>    
+      <li>Memoization = result caching. Save a function's result in a cache property, then return the result from the cache object.</li>
+      <li>Immediately Invoked Function Expressions (IIFEs) are functions enclosed in parentheses and immediately followed by double parentheses so they are invoked as soon as they're 
+          defined. Useful for keeping variables wrapped up in the scope of the function, temporary variables that only exist while the IIFE is invoked, setting up initialization code, 
+          safe use of strict mode, and creating self-contained code blocks.  </li>
+      <li>Functions can redefine and rewrite themselves by assigning an anonymouse function to a variable that has the same name as the function. Any properties previous set on the function 
+          will be lost when it redefines itself. Useful for init-time branching, to avoid rechecking for features every time they are invoked. 
+      </li>
+      <li>Recursive functions will repeatedly invoke themselves until a certain condition is met. Useful to use for iterative processes. </li>
+      <li>Callback = a function passed to another function as an argument, and then invoked inside that function. Can be used to facilitate event-driven asychronous programming as part of the 
+          event loop. A program can continue running in a single thread while waiting for another task to complete. A callback is not invoked immediately, it always waits for the current 
+          execution stack to complete before it is invoked.</li>    
+      <li>Callback hell = a nested code block with multiple callbacks, difficult to read.  </li>
+      <li>Promises can be used instead of callbacks when handling multiple asynchronous actions in sequence, easier to read and handles errors nicely. A promise is created with a constructor 
+          function, which takes an executor function as an argument to initialize the promise and start the asynchronous operation. It also takes two functions as arguments to deal with the settled 
+          promise: resolve() and reject(). Once a promise is settled, the then() method is used to deal with the outcome, it accepts two functions: a fulfillment function that is passed data returned 
+          from the resolve() function, and a rejection function that receives data from the reject() function. Alternatively, the catch() method can be used to handle failures instead. then() and 
+          catch() can be chained together. See a great tutorial on promises at https://www.freecodecamp.org/news/javascript-es6-promises-for-beginners-resolve-reject-and-chaining-explained/.
+      </li>
+      <li>Higher-order functions = functions that return other functions, or return another function as a result, or both.</li>
+      <li>Closure = the process of keeping a reference to a variable available outside the scope of the function it was originally defined in. A closure can also change the value of the 
+          variable long after the function it was originally declared in has been invoked. </li>
+      <li>Generator = functions used to produce iterators that maintain the state of a value. Created by placing an asterisk(*) after the function keyword. A generator function returns an 
+          iterator object that provides a next() method, which returns the next value in a sequence defined by the generator function.
+      </li>    
+      <li>Functional programming = a programming paradigm that involves breaking processes down into steps that can be applied as a series of functions.</li>
+      <li>Pure functions follow 3 rules: 1) the return value only depends on the values provided as arguments, not on the state of the code they are called from; 2) have no side effects, they 
+          don't change values or data elsewhere in program, making only non-destructive data transformations and return new values; 3) referential transparency, always give the same result 
+          when the same arguments are passed in. Pure functions must have at least one argument and a return value. Pure functions make code more concise and predictable, reduce the amount 
+          of bugs, are easier to test, return values can be cached (Memoization). Using const to declare variables helps to avoid destructive data transformatins.  
+      </li>
+      <li>Currying, or partial application = the process of applying one argument at a time to a function. A new function is returned until all the arguments have been used. A final result 
+          is only returned when all the expected arguments have been provided. Currying allows you to turn a single function into a series of functions, as needed.
+      </li>
+      <li>Ajax (Asynchronous JavaScript and XML) is a technique for sending and receiving data asynchronously in the background. Ajax can be used to update partial web pages dynamically without 
+          doing a full page reload.</li>
+      <li>The data can be moved in many forms, but is usually JSON.</li>    
+      <li>Ajax can be used for communication with external APIs (application programming interface).</li>
+      <li>Ajax requests can be made using the Fetch API, which uses promises to avoid callback hell. The Fetch API provides a global fetch() method with one mandatory argument, the URL of the 
+          resource to be fetched. Examples: https://www.javascripttutorial.net/javascript-fetch-api/.</li>
+      <li>The response interface allows you to control the response received from a request, or to create your own response objects. The ok property checks to see if the response is successful, 
+          based on the HTTP status code, accessed with the status property. 200 = successful, 201 = a resource was created, 204 succesful but no content returned. The ok property returns true is 
+          status property is between 200-299. Status codes: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes. Use an if block to check if the request was successful. The JSON response will return 
+          JSON data which will be resolved as a JavaScript object, and can be manipulated with JavaScript.  
+      </li>
+      <li>The request interface allows you to create a response object that contains information about the request being made (url, headers, etc.) Create using the Request() constructor. url is the only 
+          property that is required. Other properties and methods: https://developer.mozilla.org/en-US/docs/Web/API/Request.</li>
+      <li>Use the headers interface to create HTTP headers that can be added to a request or response object. Typical information includes the file-type, cookie information, authentication 
+          information, and when last modified.</li>    
+      <li>Requests can retreive data with a GET request, or send data with a POST request.</li>
+      <li>Spinners can be used to indicate that the site is waiting for something to happen. http://ajaxload.info/ and https://icons8.com/preloaders/ are good resources to build spinners.</li>
+      <li>Use dummy site http://jsonplaceholder.typicode.com/ to spoof the process of sending JSON data to a server, then receiving JSON data in response.</li>
+      <li>The FormData interface makes it easier to submit information in forms using Ajax.</li>
+                 
+      <li>Code example: <a href="/WDD330/hikes2/index.html">Great Hikes with Comments Feature</a></li>   
+</ul>
+ </body>
+
+ </html>
