@@ -1,0 +1,21 @@
+body {
+    background: black;
+    color: black;
+    font-family: "Lucida Console", Courier, monospace;
+
+}
+.wrapper {
+    background: white;
+    max-width: 600px;
+    margin: auto;
+    padding: 25px;
+}
+h1 {
+    text-align: center;
+}
+/* mobile first, this is for 600px onwards */
+@media (min-width: 600px) {
+    body {
+        background: purple;
+    }
+}
