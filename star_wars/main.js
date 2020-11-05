@@ -5,15 +5,24 @@ let next = document.getElementById('next');
 next.addEventListener("click", () => {
     console.log('inside next event listener');
     console.log(next.myUrl);
-    if (next.myUrl) renderPeople(next.myUrl);    
+    if (next.myUrl) {
+        //github is not accepting an http request, change it to https
+        let fixedUrl = next.myUrl.replace("http", "https");
+        console.log(fixedUrl);
+        renderPeople(fixedUrl);
+    }        
 });
 
 let prev = document.getElementById('prev');
 prev.addEventListener("click", () => {
     console.log('inside next event listener');
     console.log(prev.myUrl);
-    if (prev.myUrl) renderPeople(prev.myUrl);
-                    
+    if (prev.myUrl) {
+        //github is not accepting an http request, change it to https
+        let fixedUrl = prev.myUrl.replace("http", "https");
+        console.log(fixedUrl);
+        renderPeople(fixedUrl);
+    }                    
 });
 
 function setNavButton (id, url) {
