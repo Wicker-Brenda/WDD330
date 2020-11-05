@@ -23,7 +23,7 @@ function setNavButton (id, url) {
 
 for(let i = 1; i <= 9; ++i) {
     let id = i.toString();
-setNavButton(id, 'http://swapi.dev/api/people/?page=' + id);
+setNavButton(id, 'https://swapi.dev/api/people/?page=' + id);
 }
 
 async function getPeople(url) {      
@@ -52,7 +52,7 @@ async function renderPeople(url = 'https://swapi.dev/api/people/') {
         pdiv.thePerson = person;
         container.appendChild(pdiv);      
     });
-    
+
     next.myUrl = people.next;
     prev.myUrl = people.previous;
     
