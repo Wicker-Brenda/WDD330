@@ -12,107 +12,110 @@
   <h1>Week 8 Notes</h1>
   <h2>HTML5 and CSS3 for the Real World, chapters 8 and 12</h2>
   <ul>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <!-- <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>    
-      <li></li>
-      <li></li>
-      <li></li>
-       -->
+      <li>The CSS3 transform property lets you translate, rotate, scale, and/or skew any element on the page. The value of the transform property is 
+          one or more tranform functions, separated by spaces, applied in the order provided. Don't declare multiple transforms, the cascade will have the later ones override 
+          the earlier. Instead, declare one transform and have a space separated list of transform functions. For working examples, see https://www.w3schools.com/cssref/css3_pr_transform.asp
+      </li>
+      <li>Older versions of Internet Explorer (8 or older) require filters. Use http://www.useragentman.com/IETransformsTranslator/ to change your transforms into something 
+          the ancient browser can understand.
+      </li>
+      <li>Translation functions move elements left, right (x axis); up, down (y axis). Does NOT impact flow of the document. Can only be moved relative to its current position. 
+          Can move only one direction by specificing X or Y= transform: translateX(45px);  Can move both directions at once, translate(x,y) example = transform: translate(45px, -45px);
+      </li>    
+      <li>Transforms don't work on inline elements, add display: inline-block; </li>
+      <li>scale(x,y) function scales an element horizontally then vertically; if only one value is provided it will be used for both x and y, which maintains original aspect ratio. 
+          Example= transform: scale(2); will double the element. scale(1.5, 0.25) will deform it.</li>
+      <li>Scaled elements grow/shrink from center point, change this default by including transform-origin property, parameters are top, center. Example= transform-origin: 10% 10%; For a 
+          working example that includes the z-axis (3D), see https://www.w3schools.com/cssref/css3_pr_transform-origin.asp
+      </li>
+      <li>Scaling does NOT impact flow of document, surrounding text will not reflow. If that is needed, adjust the element's height, width, or font-size instead.  </li>
+      <li>rotate() function rotates an element around the point of origin (default is center) by specified angle value. Angles are usually in degrees, positive is clockwise and negative is 
+          counter-clockwise. Example= transform: rotate(10deg);. Order matters, place rotate first before translate if you want to rotate THEN move, or vice versa.
+      </li>    
+      <li>skew(x,y) specifies a skew along the x and y axes. If only one parameter is given, it will only skew on the x axis. Example= transform: skew(15deg, 4deg). To skew only one axis, 
+          use the axis-specific version= skewY().
+      </li>
+      <li>Transitions (animations) do not need support for older browsers; they fail accessibly- the animation happens instantly instead of over time. Transitions are declared along with 
+          the regular styles of an element. Whenever target properties change, the browser applies the transition gradually. To create a simple transition using only CSS (no JS): 
+          1) declare the original state of the element in the default style declaration, 2) declare the final state of the element (ex: :hover state), 3) include the transition functions in 
+          your default stayle declaration using transition properties (transition-property, transition-duration, transition-timing-function, transition-delay)
+      </li>
+      <li>transition-property defines the CSS properties of the element that should be transitioned; all is the default, otherwise comma-separate the list of properties. Any property with 
+          a definable midpoint can be transitioned, except for visibility which changes at the endpoint of the transition. Properties that can be animated are: 
+          https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties. Use a webkit prefix to support older browsers. 
+      </li>
+      <li>transition-duration sets how long the transition will take (from default state to transitioned state). Specify in seconds(s) or milliseconds(ms). Ideal length is 200ms, longer makes 
+          website seem slow, faster is too subtle. By default the reverse transition (returning to original state) also takes place over the same duration. </li>
+      <li>transition-timing-function lets you control pace of transition in granular detail. Most common: ease(slow start, speeds up, ends slowly); linear(animates at a constant speed); 
+          ease-in(slow to start but gains speed); ease-out(starts at full speed, progressively slows as it reaches end); ease-in-out(similar to ease but accelerates more sharply at beginning). 
+        Set a relatively long transition-duration when testing. Can be more precise with cubic-bezier, but the above will handle most needs. To test cubic-bezier: https://cubic-bezier.com/ or 
+        http://estelle.github.io/animation/files/cubicbezierprint.html  </li>    
+      <li>transition-delay can introduce a delay before the transition begins. Default is 0, begins immediately, but bad user experience if they accidentally moused over the target. A 
+          50ms delay ensures they are intentionally hovering before beginning transition. Use a webkit prefix for older browsers. A negative delay starts the transition immediately, but 
+          partially through the animation. 
+      </li>
+      <li>transition shorthand property lets you list the properties in any order, but if a delay is included must also have a duration which precedes it. Example= 
+          transition: transform 0.2s ease-out 50ms;
+      </li>
+      <li>Multiple transitions, 3 ways: 1) Use the all keyword, and all properties will transition at the same rate, speed, and delay= transition: all 0.2s ease-out 50ms; 2) Longhand, 
+          include each value in a comma-separated list using the SAME order as in the transition-property for all the transition property declarations. 3) Shorthand, 
+          specify all the transition values as a shorthand for each transition, and seperate each property's transition with a comma= transition: transform 0.2s ease-out 50ms, color 0.1s linear 50ms;
+      </li>
+      <li>CSS animations control each step of the animation with keyframes. Placed at start, end, and any # in between. Create a named animation, then attach it to an element in it's property declaration 
+          block. Use @keyframes animationName, and @-webkit-keyframes animationName for older browsers. Do not quote the animation name. Include animated properities inside the keyframe. 
+          Two keyterms- from and to- evaluate to 0% and 100%, and specify how far along the animation each keyframe is located. Keyframes can be specified in any order, percentage value not 
+          order of declaration determines sequence of keyframes in an animation. 
+          Examples: https://www.w3schools.com/css/css3_animations.asp, and with vendor prefixes: https://css-tricks.com/snippets/css/keyframe-animation-syntax/
+      </li>
+      <li>Animation properties: https://www.w3schools.com/cssref/css3_pr_animation.asp.</li>    
+      <li>animation-name is used to attach an animation to an element (must be previously definied using the @keyframes syntax). Do not put quotes around the animation name.</li>
+      <li>animation-duration defines the length of time (seconds or milliseconds) it takes an animation to complete one iteration (0% - 100%). Default is 0s, not perceptible. Consisder it required.</li>
+      <li>animation-timing-function determines how the animation will progress over its duration. Options are: ease, linear, ease-in, ease-out, ease-out-in, cubic-bezier() function, step-start, 
+          step-end, or custom number of steps with the steps(number, direction) function.
+      </li>
+      <li>animation-iteration-count defines how many times the animation will play through. Default is 1 (plays once). Usually an integer, can use decimal points to play partial animations. Infinite 
+          keeps animating on a loop.
+      </li>
+      <li>animation-direction default goes from the 0% to the 100% keyframe, jumping back to 0% to start a new direction. Change direction: reverse: starts at 100% and goes to 0%, 
+          alternate: odd iterations go in default direction and even iterations go in reverse, alternate-reverse: alternates direction each iteration but starts in reverse. When animations 
+          are played in reverse, timing functions are also reversed (ease-in becomes ease-out).
+      </li>    
+      <li>animation-delay defines how many milliseconds or seconds to wait before the browser begins the animation.</li>
+      <li>animation-fill-mode definies what happens before an animation begins and after it ends. Default is none (nothing happens outside the animation). Also: forwards, backwards, both.</li>
+      <li>animation-play-state defines whether the animation is running or paused. A paused animation displays the current state of the animation statically, and when it resumes it restarts 
+          from the current position.
+      </li>
+      <li>Shorthand animation: space-separated list of values, can skip default values. Be careful with animation-name, DO NOT USE any animation property key such as forwards, running, alternate, etc. 
+          To declare multiple animations on an element, include a grouping for each animation name, with each shorthand grouping separated by a comma.
+      </li>
+      <li>Use transforms, transitions, and animations SPARINGLY and only where it enhances the user experience. Less is more.</li>    
+      <li>Use HTML5's <b>Canvas API</b> to draw and manipulate pixels using JavaScript instead of downloading images. Create a canvas element (container for the graphics) with an id and default text that is 
+          only shown if the browser does not support Canvas. Set a width (default is 300) and height (default is 150), which determines how large the canvas coordinate system is. Add a border (in CSS) 
+          to make it easy to see the canvas while you work with it. Example: https://www.w3schools.com/html/html5_canvas.asp and docs: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+      </li>
+      <li>To test pixel manipulation using canvas in Firefox or Chrome, use localhost or test it online to prevent security errors.</li>
+      <li>Canvas is quicker than SVG (so better for lots of animations) and is good for manipulating pixels and video. Downsides: because it is not text-based and does not create a DOM node it is 
+          not accessible to screen readers. Also, canvas operates in immediate mode, once you finish drawing a shape you cannot access it again to modify it. You can save images as a PNG or JPG. 
+          Finally, Canvas does not have as many tools to help you draw images as SVG does.
+      <li>Other Canvas resources: https://dev.opera.com/articles/html5-canvas-basics/, 
+          https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/HTML-canvas-guide/Introduction/Introduction.html</li>    
+      </li>
+      <li><b>SVG</b> = Scalable Vector Graphics, a file format that lets you describe vector graphics using XML. Vector images preserve their quality even when enlarged or shrunk. 
+        You can do many of the same tasks in SVG that you do in canvas- drawing paths, shapes, text, gradients, and patterns. </li>
+      <li>SVG is accesible to screen readers and search engines (text-based and via the DOM). It operates in retained mode, so the structure of the image is preserved in the XML 
+          document that describes it, so it can be modified. SVG has more complete tools to work with it. Downsides: slower than Canvas, and can't manipulate images by pixels 
+          like you can with Canvas... no way to convert a video to black and white.</li>
+      <li>Use an image editor to create SVG images, like Inkscape: https://inkscape.org/. Start with public domain images instead of from scratch, as from 
+        https://openclipart.org/search/?query=weather+icons </li>
+      <li>Filters in SVG are not well-supported in older browsers, it is better to change colors instead.</li>
+      <li>http://raphaeljs.com/ is an open-source JavaScript library that makes drawing and animating SVG easier. Download and include raphael.js into your HTML page and then begin 
+          using in your page. Raphael tutorial: https://code.tutsplus.com/tutorials/an-introduction-to-the-raphael-js-library--net-7186
+      </li>
+      <li><b>Drag and Drop API</b>. Override the default behavior elements to allow them to be dragged (set the draggable attribute to true). Add an event listener for the dragstart event 
+        on any draggable elements. Add event listeners for the dragover and drop events on other elements to allow them to accept a dropped item. Tutorials on Drag and Drop: 
+        https://code.tutsplus.com/tutorials/an-introduction-to-the-raphael-js-library--net-7186 or https://flaviocopes.com/drag-and-drop/. 
+        Documentation: https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API
+    </li> 
                  
       <li>Code example: <a href="/WDD330/star_wars/index.html">Star Wars: Working With a Remote API</a></li>   
 </ul>
