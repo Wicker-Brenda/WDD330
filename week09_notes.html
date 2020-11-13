@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="with=device-width, initial-scale=1.0" />
+  <title>Week 9 Notes</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js"></script>
+ </head>
+
+ <body>
+  <h1>Week 9 Notes</h1>
+  <h2>Javascript: Novice to Ninja, chapters 9 and 14</h2>
+  <ul>
+      <li>The window object is the global object in the browser. Global variables are properties of the window object in a browser environment. You can quickly assign the variable 
+          global to the global object from within the global scope: const global = this; 
+      </li>
+      <li>alert(), confirm(), and prompt() are methods of the global object. They all open dialogs that halt execution of the program. alert() just displays a 
+          message. confirm() displays a confirmation message, giving options of OK or Cancel, returns boolean. prompt() displays the message, with an input field for the user 
+          to enter text which is returned as a string when the user clicks OK, null is returned if the user clicks Cancel. Use these methods with caution: 1) they stop execution of 
+          the program, 2) users can disable dialogs from appearing. 
+      </li>
+      <li>The window.navigator object gives information about the user's browser and operating system. Can be unreliable as it can be modified by the user. Can be difficult to read 
+          as all browsers mimic others to some extent. </li>    
+      <li>The window.location object provides information about the URL of the current page. It includes the href, protocol, host, hostname, port, pthname, search, hash, and 
+          origin properties. It also includes the reload(), assign(), replace(), and toString() methods. </li>
+      <li>Browser history: the window.history object keeps information about pages that have been visited in that session. It includes a length property and go(), forward(), and 
+          back() methods.</li>
+      <li>Controlling windows: you can open, close, resize, and move windows but it is almost always a bad idea.</li>
+      <li>Screen information: the window.screen object contains information about the user's screen. Use with care, media queries and feature detection are better practices.</li>
+      <li>The document.write() method is an archaic way of writing text to the document, it should be avoided. It heavily mixes javascript into the HTML document, and will completely 
+          replace the current document in an already loaded page. </li>
+      <li>Cookies: use the document.cookie property to store small pieces of information between requests. Javascript cookie handling is cumbersome, consider using a library such as 
+        https://github.com/ScottHamper/Cookies or https://github.com/js-cookie/js-cookie 
+      </li>
+      <li>Timing functions: setTimeout()method can be used to invoke a function after a set amount of time. It can be canceled with the clearTimeout() method. setInterval() method 
+          can be used to repeatedly invoke a function. It can be stopped using the clearInterval() method. BE CAREFUL using the this keyword with either timing function, as this is 
+          set to the window object not the method's object, and can get unexpected results. If must use, bind this to the object instead. See page 494 of Javascript: Novice to Ninja, 
+          or https://www.javascripttutorial.net/javascript-bind/
+      </li>    
+      <li>Animation: requestAnimationFrame() method can be used to produce smooth/optimized animation by utilizing the browser's built-in graphics capabilities. It can be canceled 
+          with cancelAnimationFrame(). In general, it is better to use CSS for any animation effects instead.
+      </li>
+      <li>HTML5: the latest version of Hyper Markup Language used to create web pages. It includes a variety of technologies, including several API's that are accessible with 
+          JavaScript. New features are continually being developed, check to see if a feature is ready for use with https://caniuse.com/ 
+          </li>
+      <li>data- attributes are used to embed custom data in a web page that is ignored by the browser. They are solely used by the Javascript program, and are perfect for adding data that 
+          can be a hook to access information about a particular element on a page. See https://www.w3schools.com/tags/att_global_data.asp for creating a data- attribute, and 
+          https://www.geeksforgeeks.org/how-to-get-the-data-attributes-of-an-element-using-javascript/?ref=rp for using getAttribute() to access it.</li>
+      <li>Because API's change so quickly, best practice is to use feature detection before using any API methods.</li>
+      <li>Web Storage API allows key-value pairs to be stored on the user's device similar to cookies, but without those storage limitations.</li>
+      <li>The Geolocation API allows you to access the geographic coordinates of a user's device, with their permission. It is a property of the navigator object, which has a 
+          getCurrentPostion() method that returns a position object. For examples, see https://www.w3schools.com/js/js_api_geolocation.asp and 
+          https://www.javascripttutorial.net/web-apis/javascript-geolocation/</li> 
+      <li>Web Worker API: used to perform computationally heavy tasks in the background, which avoids the website becoming unresponsive. Not supported in Chrome, either use another 
+          browser or use the --allow-file-access-from-files flag (only for development, not production).
+      </li>    
+      <li>Websockets (push messaging): a new protocol for communicating over the internet, allows real-time, two-way communication. The connection is kept open and responses are pushed 
+          to the client as soon as they are received. See examples at http://websocket.org/ </li>
+      <li>Notification API: allows you to display notifications on the user's system.</li>
+      <li>Multimedia: audio and video elements can be used to embed audio tracks and video clips in a web page. They have a Media API that can control playback using JavaScript. Methods 
+          and properties: play(), pause(), volume, muted, currentTime, playbackRate, loop, duration. Use an event listener to make sure the browser has received all the metadata associated 
+        with a video. Audio and video events are: play, pause, volumechange, loadedmetadata. For a full list of properties, methods, and events for video elements: 
+        https://www.w3.org/2010/05/video/mediaevents.html </li>
+      <li>Other APIs: https://developer.mozilla.org/en-US/docs/Web/API</li>
+      <li>The canvas element can be used to dynamically draw geometric shapes, text, and images on a web page in real time using JavaScript. See notes from week 8.</li>
+      <li>A shim or polyfill is a library of code that adds support of missing features to older browsers, allowing you to use the API as usual. 
+          https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills  </li>
+                       
+      <li>Code example: <a href="/WDD330/drums/index.html">Keyboard Drum Kit</a></li>   
+</ul>
+ </body>
+
+ </html>
