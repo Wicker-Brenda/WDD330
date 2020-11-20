@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 10 Notes</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js"></script>
+ </head>
+
+ <body>
+  <h1>Week 10 Notes</h1>
+  <h2>MDN Web Docs, 'Client-side form validation' and 'Using Fetch'</h2>
+  <ul>
+      <li>https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation</li>
+      <li>Client-side validation = helps ensure the data submitted matches requirements in form controls. Improves user experience, lets them correct invalid data before submitting. 
+          NOT a security measure, checks should also be performed on the server-side. NEVER trust data passed to the server from the client.
+      </li>
+      <li>Form validation = browser and/or web server checks if the information is in correct format and within constraints of the application. 3 reasons for form validation: 1) get the 
+          right data, in the right format; 2) protect user's data; 3) protect application from malicious users. 
+      </li>    
+      <li>Built-in form validation uses HTML5 validation features, better performance than JavaScript but not as customizable. Use validation attributes on form elements, such as required, 
+          minlength, maxlength, min, max, type, pattern. Valid/invalid elements match the :valid or :invalid CSS psuedo-classes, which you can style. Invalid elements block the form from 
+          sending and display an error message. 
+      </li>
+      <li>JavaScript validation is completely customizable, but will likely need to use a library. </li>
+      <li>Constraint Validation API has a set of methods and properties available on the button, fieldset, input, output, select, and textarea elements.</li>
+      <li>For legacy brower support or custom controls, don't use the Constraint Validation API, use JavaScript to write your own validation.      
+      </li>    
+      <li> Errors only approach: 
+        https://www.smashingmagazine.com/2012/06/form-field-validation-errors-only-approach/.</li>
+      <li>Best practices for web form validation: 
+        https://www.smashingmagazine.com/2009/07/web-form-validation-best-practices-and-tutorials/. </li>
+      <li>Hints and validation in web forms: https://www.webfx.com/blog/web-design/best-practices-for-hints-and-validation-in-web-forms/. </li>
+      <li>Inline validation: https://alistapart.com/article/inline-validation-in-web-forms/</li>    
+      <li>Test your skills: https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Form_validation</li>
+      <li>ALWAYS think carefully about the user when creating or customizing client-side form validation. Help the user correct the data they provide: 1) display explicit error messages, 
+          2) be permissive about the input format, 3) point out exactly where the error occurs, especially on large forms.
+      </li>
+      
+      <li>https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch</li>    
+      <li>The Fetch API provides a JavaScript interface for accessing and manipulating requests and responses. It also provides a global fetch() method. </li>
+      <li>The Promise returned from fetch() WON'T REJECT on HTTP error status even if the response is an HTTP 404 or 500, but resolves normally with ok status set to false. It 
+          will only reject on network failure or if anything prevented the request from completing.    </li>
+      <li>fetch() can receive cross-site cookies, you can establish a cross site session using fetch.</li>
+      <li>fetch won't send cookies, unless you set the init option. The init object is an optional second parameter that allows you to control a number of different settings.</li>    
+      <li>The simplest use of fetch() takes one argument- the path to the resource to be fetched- and returns a promise containing a Response object.</li>
+      <li>You can specifiy options for credentials for the request in the init object. credentials: ('include', 'same-origin', 'omit') </li>
+      <li>Fetch can be used to POST JSON-encoded data, upload files,and  process text files line by line. </li>
+      <li>To check that a fetch was successful, check that the promise resolved, then check that the Response.ok property has a value of true.</li>    
+      <li>You can use the Request() constructor to create a request object, and pass that in as a fetch() method argument, instead of a url.</li>
+      <li>The headers interface allows you to create your own headers object with the Headers() constructor. A headers object is a simple multi-map of names to values. Headers objects 
+          have a guard property, with possible values of none, request, request-no-cors, response, immutable.
+      </li>
+      <li>Response object instances are returned when fetch() promises are resolved. The most common response properties are Response.status, Response.statusText, Response.ok. </li>
+      <li>Both requests and responses may contain body data. A body is an instance of any of the following types: ArrayBuffer, ArrayBufferView, Blob/File, string, URLSearchParams, FormData.</li>    
+      <li>Feature detection: Fetch API support can be detected by checking for the presence of Headers, Request, Response, or fetch() on the Window or Worker scope.</li>
+      <li>Fetch Polyfill recreates functionality for non-supporting browsers.</li>
+                       
+      <li>Code example: <a href="/WDD330/quakes/index.html">Quakes Near Me: Remote API and Geolocation</a></li>   
+</ul>
+ </body>
+
+ </html>
