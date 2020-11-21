@@ -190,12 +190,12 @@ const clothesList = [
       name: "Bitterly Cold Weather",
       imgSrc: "images/dummy.jpg", // "bitterly_cold.jpg",
       imgAlt: "Image of bitterly cold weather outfit",
-      clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Coat", ]
+      clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Coat", "Hat", "Scarf", "Mittens"]
     }
   
    
   //todo: optional stretch, 7-12) add umbrella/rain jacket to each outfit: right now, umbrella will just be another clothing item on the side when it is wet
-  //todo: render view of outfit with functions in outfits.js, conditional logic that calls that function in main.js or weather.js 
+  //todo: render view of outfit with functions in outfits.js, conditional logic that calls that function in weatherController.js or weather.js 
   //todo: (optional stretch) Sunday best dress, warm weather and cool weather
   
   ]
