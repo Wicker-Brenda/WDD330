@@ -26,6 +26,7 @@ export class WeatherController { //not providing an export with the default keyw
     this.parentElement = document.querySelector(this.parent);
     await this.initPos();
     this.getWeatherByLocation();  
+    
   }
 
   async initPos() {
@@ -57,8 +58,42 @@ export class WeatherController { //not providing an export with the default keyw
     console.log(daily, current);
     // render the list to html
     this.weatherView.renderWeather(daily, current, this.parentElement);
+    this.showOutfit(daily, current, this.parentElement);
   }
+
+  //need to pass in the weather info to determine which render outfit function to call
+  showOutfit(daily, current, parent) { //pass in daily, current, then write conditional code to determine which render function to call
+    //clear out anything already in the innerHTML
+    
+
+    let feelsMorn = daily[0].feels_like.morn;
+    let feelsDay = daily[0].feels_like.day;
+    console.log(feelsMorn, feelsDay);
+    // if 
+    // let todaysOutfit  
+
+    //conditional logic to select outfit to render 
+    //let outfit = this.outfits.outfitList.filter(outfit => outfit.name ===  )
+    
+    //pass wet as a boolean, if true render an umbrella
+    console.log(this.outfits);
+    console.log(this.outfits.outfitList);
+    let outfit = this.outfits.getOutfitList;
+    //let outfit = this.outfits.outfitList.filter(outfit => outfitList.name === "Hot Weather");
+    console.log(outfit);
+
+    //test render
+   // this.weatherView.renderOutfit(parent, clothes, wet, umbrella);  
+  }
+
+
 }
+
+
+// let feels = document.getElementById("feels");
+//         //let feelsMorn = daily[0].feels_like.morn;
+//         let feelsDay = daily[0].feels_like.day;
+//         feels.innerHTML = '<p> It feels like ' + feelsDay + '</p>';
 
 
 
@@ -77,13 +112,8 @@ export class WeatherController { //not providing an export with the default keyw
 //   })
 // }
 
-//need to pass in the weather info to determine which render outfit function to call
-function showOutfit() { //pass in daily, current, then write conditional code to determine which render function to call
-  //clear out anything already in the innerHTML
-  let outfitDiv = document.getElementById("outfit"); 
-  outfitDiv.innerHTML = '';
-  
-  //conditional logic to select outfit to render 
-  //pass wet as a boolean, if true render an umbrella
- // renderHotOutfit(outfitDiv, wet);  
-}
+
+
+//from inside show outfit
+// let outfitDiv = document.getElementById("outfit");  //don't think I need this, outfit is current the parent element
+//     outfitDiv.innerHTML = ''; //pretty sure don't need this either

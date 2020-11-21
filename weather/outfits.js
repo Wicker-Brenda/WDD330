@@ -143,7 +143,9 @@ export default class Outfits {
         imgSrc: "images/dummy.jpg", // "hot.jpg",
         imgAlt: "Image of hot weather outfit",
         //shirt: clothesList.name == ""  //not sure how to add in each clothesList item here
-        clothing: ["Short Sleeve Shirt", "Shorts", "Sandals"] 
+        clothing: ["Short Sleeve Shirt", "Shorts", "Sandals"],
+        lowTemp: 70,
+        highTemp: 200 
       },
       {
         //pic will include short sleeves, pants, sandals
@@ -200,6 +202,13 @@ export default class Outfits {
     //todo: (optional stretch) Sunday best dress, warm weather and cool weather
     
     ]
+    
+    //some function to return the arrays
+    getOutfitList() {
+    console.log('in getOutfitList');  
+    return this.outfitList;
+    console.log(this.outfitList); //why is this unreachable? Does it need a constructor? should it even be in a class? 
+    }
 
   } //end Outfits class
 
