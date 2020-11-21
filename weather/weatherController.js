@@ -1,6 +1,7 @@
 import { getLocation } from './utilities.js';
 import Weather from './weather.js';
 import WeatherView from './weatherView.js';
+import Outfits from './outfits.js';
 
 // Weather controller
 export class WeatherController { //not providing an export with the default keyword, removed it
@@ -16,6 +17,7 @@ export class WeatherController { //not providing an export with the default keyw
     // this is how our controller will know about the model and view...we add them right into the class as members.
     this.weather = new Weather();  //model
     this.weatherView = new WeatherView();  //view
+    this.outfits = new Outfits(); //outfits class with clothing arrays
   }
 
   async init() {

@@ -26,9 +26,33 @@
         //let feelsMorn = daily[0].feels_like.morn;
         let feelsDay = daily[0].feels_like.day;
         feels.innerHTML = '<p> It feels like ' + feelsDay + '</p>';
+
+         
   
     //call showOutfit(daily, current);
     } 
+
+    //pass in outfit and individual clothes together in clothes array
+    //wet is a boolean for the umbrella, umbrella passes in img info
+    renderOutfit(parent, clothes, wet, umbrella) {  
+      clothes.forEach(item => {
+        parent.appendChild(renderClothesImage(item));
+      });
+      if(wet) {
+        parent.appendChild(renderClothesImage(umbrella));
+      }
+    }
+  }
+
+    //image path
+    //todo: change to what is needed in GitHub
+    const imgBasePath = ""; //"./"; 
+
+  function renderClothesImage(item) {
+    const pic = document.createElement("li"); //do I want this as an li?
+    pic.myName = item.name;
+    //pic.classList.add('clothes'); //for CSS, remove if don't use it
+    pic.innerHTML = `<div class="image"><img src="${imgBasePath}${item.imgSrc}" alt="${item.imgAlt}"></div>`;
   }
 
   
