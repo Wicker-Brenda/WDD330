@@ -1,7 +1,7 @@
 //create an array of clothing
 //use daily feels_like for temperatures
-export default class Outfits {
-  clothesList = [
+//export default class Outfits {
+const clothesList = [
       {
         name: "Short Sleeve Shirt",
         imgSrc: "images/dummy.jpg", // "short_sleeve.jpg", //img has a width and height
@@ -23,7 +23,9 @@ export default class Outfits {
         lowTemp: -200,
         highTemp: 49,
         //can use if ABOVE pop
-        rainPop: 0
+        rainPop: 0,
+        xcoord: 1,
+        ycoord: 1
       },
       {
         name: "Light Jacket",
@@ -33,7 +35,9 @@ export default class Outfits {
         lowTemp: 40,
         highTemp: 60,
         //can use if ABOVE pop
-        rainPop: 0
+        rainPop: 0,
+        xcoord: 1,
+        ycoord: 1
       },
       {
         name: "Coat",
@@ -43,7 +47,9 @@ export default class Outfits {
         lowTemp: -200,
         highTemp: 39,
         //can use if ABOVE pop
-        rainPop: 0
+        rainPop: 0,
+        xcoord: 1,
+        ycoord: 1
       },
       {
         name: "Umbrella",
@@ -53,7 +59,9 @@ export default class Outfits {
         //use if ABOVE pop
         lowTemp: -200,
         highTemp: 200,
-        rainPOP: 24
+        rainPOP: 24,
+        xcoord: 1,
+        ycoord: 1
       },
       {
         name: "Shorts",
@@ -62,7 +70,9 @@ export default class Outfits {
         lowTemp: 55,
         highTemp: 200,
         //can use if ABOVE pop
-        rainPop: 0
+        rainPop: 0,
+        xcoord: 1,
+        ycoord: 1
       },
       {
         name: "Pants",
@@ -71,7 +81,9 @@ export default class Outfits {
         lowTemp: -200,
         highTemp: 54,
         //can use if ABOVE pop
-        rainPop: 0
+        rainPop: 0,
+        xcoord: 1,
+        ycoord: 1
       },
       {
         //everyday sandals
@@ -81,7 +93,9 @@ export default class Outfits {
         lowTemp: 51,
         highTemp: 200,
         //can use if ABOVE pop
-        rainPop: 0
+        rainPop: 0,
+        xcoord: 1,
+        ycoord: 1
       },
       {
         name: "Sneakers",
@@ -90,7 +104,9 @@ export default class Outfits {
         lowTemp: -200,
         highTemp: 50,
         //can use if ABOVE pop
-        rainPop: 0
+        rainPop: 0,
+        xcoord: 1,
+        ycoord: 1
       },
       {
         name: "Socks",
@@ -99,7 +115,9 @@ export default class Outfits {
         lowTemp: -200,
         highTemp: 50,
         //can use if ABOVE pop
-        rainPop: 0
+        rainPop: 0,
+        xcoord: 1,
+        ycoord: 1
       },
       {
         //use with bitterly cold, below 30
@@ -109,7 +127,9 @@ export default class Outfits {
         lowTemp: -200,
         highTemp: 30,
         //can use if ABOVE pop
-        rainPop: 0
+        rainPop: 0,
+        xcoord: 1,
+        ycoord: 1
       },
       {
         //use with bitterly cold, below 30
@@ -119,7 +139,9 @@ export default class Outfits {
         lowTemp: -200,
         highTemp: 30,
         //can use if ABOVE pop
-        rainPop: 0
+        rainPop: 0,
+        xcoord: 1,
+        ycoord: 1
       },
       {
         //use with bitterly cold, below 30
@@ -129,13 +151,15 @@ export default class Outfits {
         lowTemp: -200,
         highTemp: 30,
         //can use if ABOVE pop
-        rainPop: 0
+        rainPop: 0,
+        xcoord: 1,
+        ycoord: 1
       }
     
       //todo: (optional stretch) Sunday best dress- tights/closed toe sandals vs open-toe sandals, dress, shorts under, etc. Boy: pants/shirt/tie/dress shoes
-    ]
+    ];
 
-    oufitList = [
+  const outfitList = [
       {
         //pic will include short sleeves, shorts, sandals
         //breakpoint: feels_like above 70
@@ -153,7 +177,9 @@ export default class Outfits {
         name: "Mild Weather",
         imgSrc: "images/dummy.jpg", // "mild.jpg",
         imgAlt: "Image of mild weather outfit",
-        clothing: ["Short Sleeve Shirt", "Pants", "Sandals"]
+        clothing: ["Short Sleeve Shirt", "Pants", "Sandals"],
+        lowTemp: 60,
+        highTemp: 69 //may need to tweak this
       },
       {
         //pic will include short sleeves, pants, socks and shoes, light jacket
@@ -161,7 +187,10 @@ export default class Outfits {
         name: "Cool to Warm Weather",
         imgSrc: "images/dummy.jpg", // "cool_warm.jpg",
         imgAlt: "Image of cool to warm weather outfit",
-        clothing: ["Short Sleeve Shirt", "Pants", "Socks", "Sneakers", "Light Jacket"]
+        clothing: ["Short Sleeve Shirt", "Pants", "Socks", "Sneakers", "Light Jacket"],
+        lowTemp: 45,
+        highTemp: 79 //may need to tweak this- write code, high temp is above 59 (otherwise, long shirt)
+
       },
       {
         //pic will include long sleeves, pants, socks and shoes
@@ -169,7 +198,9 @@ export default class Outfits {
         name: "Cool Weather",
         imgSrc: "images/dummy.jpg", // "cool.jpg",
         imgAlt: "Image of cool weather outfit",
-        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers"]
+        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers"],
+        lowTemp: 50,
+        highTemp: 59 //may need to tweak this
       },
       {
         //pic will include long sleeves, pants, socks and shoes, light jacket
@@ -177,7 +208,9 @@ export default class Outfits {
         name: "Cold Weather",
         imgSrc: "images/dummy.jpg", // "cold.jpg",
         imgAlt: "Image of cold weather outfit",
-        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Light Jacket"]
+        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Light Jacket"],
+        lowTemp: 40,
+        highTemp: 49 //may need to tweak this        
       },
       {
         //pic will include long sleeves, pants, socks and shoes, coat
@@ -185,7 +218,9 @@ export default class Outfits {
         name: "Very Cold Weather",
         imgSrc: "images/dummy.jpg", // "very_cold.jpg",
         imgAlt: "Image of very cold weather outfit",
-        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Coat"]
+        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Coat"],
+        lowTemp: 30,
+        highTemp: 39 //may need to tweak this
       },
       {
         //pic will include long sleeves, pants, socks and shoes, coat, hat, scarf, gloves/mittens
@@ -193,7 +228,9 @@ export default class Outfits {
         name: "Bitterly Cold Weather",
         imgSrc: "images/dummy.jpg", // "bitterly_cold.jpg",
         imgAlt: "Image of bitterly cold weather outfit",
-        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Coat", "Hat", "Scarf", "Mittens"]
+        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Coat", "Hat", "Scarf", "Mittens"],
+        lowTemp: -200,
+        highTemp: 29 //may need to tweak this
       }
     
     
@@ -201,16 +238,25 @@ export default class Outfits {
     //todo: render view of outfit with functions in outfits.js, conditional logic that calls that function in weatherController.js or weather.js 
     //todo: (optional stretch) Sunday best dress, warm weather and cool weather
     
-    ]
     
-    //some function to return the arrays
-    getOutfitList() {
-    console.log('in getOutfitList');  
-    return this.outfitList;
-    console.log(this.outfitList); //why is this unreachable? Does it need a constructor? should it even be in a class? 
-    }
 
-  } //end Outfits class
+    ];
+    
+    //console.log(outfitList);
+
+    export default class Outfits {
+      //some function to return the arrays
+      getOutfitList() {
+        console.log('in getOutfitList');  
+        return outfitList;
+        //console.log(outfitList);
+      }
+      getClothesList() {
+        console.log('in getClothesList');
+        return clothesList;
+      } 
+    }    
+  //removed Outfits class from around arrays, getter functions in class instead
 
 
 

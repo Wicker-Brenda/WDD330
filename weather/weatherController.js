@@ -6,10 +6,11 @@ import Outfits from './outfits.js';
 // Weather controller
 export class WeatherController { //not providing an export with the default keyword, removed it
   constructor(parent, position = null) {
-    this.parent = parent;
+    //this.parent = parent;
     // sometimes the DOM won't exist/be ready when the Class gets instantiated, so we will set this later in the init()
-    this.parentElement = null;
+    //this.parentElement = null;
     // let's give ourselves the option of using a location other than the current location by passing it in.
+    this.parentElement = document.getElementById(parent);
     this.position = position || {
       lat: 0,
       lon: 0
@@ -23,7 +24,10 @@ export class WeatherController { //not providing an export with the default keyw
   async init() {
     console.log("in init()");  
     // use this as a place to grab the element identified by this.parent, do the initial call of this.initPos(), and display weather info by calling this.getQuakesByRadius()
-    this.parentElement = document.querySelector(this.parent);
+    //this.parentElement = document.querySelector(this.parent);
+    //this.parentElement = document.getElementById(this.parent);
+    console.log(this.parentElement);
+    console.log(this.parentElement.nodeType); //returns 1, which is an element node
     await this.initPos();
     this.getWeatherByLocation();  
     
@@ -62,28 +66,49 @@ export class WeatherController { //not providing an export with the default keyw
   }
 
   //need to pass in the weather info to determine which render outfit function to call
-  showOutfit(daily, current, parent) { //pass in daily, current, then write conditional code to determine which render function to call
+  showOutfit(daily, current, parentElement) { //pass in daily, current, then write conditional code to determine which render function to call
     //clear out anything already in the innerHTML
     
 
     let feelsMorn = daily[0].feels_like.morn;
     let feelsDay = daily[0].feels_like.day;
     console.log(feelsMorn, feelsDay);
-    // if 
-    // let todaysOutfit  
 
-    //conditional logic to select outfit to render 
-    //let outfit = this.outfits.outfitList.filter(outfit => outfit.name ===  )
+    //conditional logic to select outfit from outfitList based on weather, put in currentOutfit
+    //print out image, put clothing from outfit into array (is this needed, or can i use currentOutfit.clothing?)
+    //forEach clothing in array, pull info from clothesList, print image and altImg 
+
+
+    //let outfit = this.outfits.outfitList.filter(x => outfitList.lowTemp <= feelsDay && outfitList.highTemp >= feelsDay);
+    //console.table(outfit);
     
     //pass wet as a boolean, if true render an umbrella
-    console.log(this.outfits);
-    console.log(this.outfits.outfitList);
-    let outfit = this.outfits.getOutfitList;
-    //let outfit = this.outfits.outfitList.filter(outfit => outfitList.name === "Hot Weather");
-    console.log(outfit);
+    let outfits = this.outfits.getOutfitList();
+    console.log(outfits);
+
+    let clothes = this.outfits.getClothesList();
+    console.log(clothes);
+
+    //for weather matching, use lowTemp/highTemp <= feelsDay, etc
+    let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.name === "Hot Weather"); 
+    console.log(currentOutfit);
+    let currentOutfitClothing = currentOutfit.clothing; 
+    console.log(currentOutfitClothing); //array
+    //pull clothesList objects to match names from currentOutfit
+    //todo: fix error, current clothing is undefined
+    let currentClothing = currentOutfit.clothing.forEach(name => {
+        clothes.filter(clothesItem => clothesItem.name === name);
+     });
+     console.log(currentClothing);
+    
+    //pass in currentOutfit and currentClothes
+
+
+    console.table(this.outfits);
 
     //test render
-   // this.weatherView.renderOutfit(parent, clothes, wet, umbrella);  
+    // this.weatherView.renderOutfit(parent, clothes, wet, umbrella); 
+    this.weatherView.renderOutfit(parentElement, currentOutfit, currentClothing); 
   }
 
 

@@ -3,7 +3,7 @@
 import { WeatherController } from './weatherController.js';
 
 //create an instance of the QuakesController class
-const myController = new WeatherController("#outfit"); //todo: double check this is the right div, may need to go to a parent div
+const myController = new WeatherController("outfit"); //todo: double check this is the right div, may need to go to a parent div
 
 myController.init();
 

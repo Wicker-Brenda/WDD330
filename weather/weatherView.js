@@ -33,14 +33,22 @@
     } 
 
     //pass in outfit and individual clothes together in clothes array
-    //wet is a boolean for the umbrella, umbrella passes in img info
-    renderOutfit(parent, clothes, wet, umbrella) {  
-      clothes.forEach(item => {
-        parent.appendChild(renderClothesImage(item));
+    //wet is a boolean for the umbrella, umbrella passes in img info - don't need wet, just umbrella with default of ''
+    renderOutfit(parentElement, currentOutfit, currentClothing) {   //, umbrella = null
+      console.log(parentElement.nodeType);  //says 1, which is an element node 
+      console.log(typeof parentElement); //object
+      console.log(parentElement, currentOutfit, currentClothing);
+      
+      parentElement.appendChild(renderClothesImage(currentOutfit));
+      currentClothing.forEach(item => {
+        //parentElement.appendChild(renderClothesImage(item));
+        console.log(item);
+        renderClothesImage(parentElement, item);
+        
       });
-      if(wet) {
-        parent.appendChild(renderClothesImage(umbrella));
-      }
+      // if(umbrella) {
+      //   parent.appendChild(renderClothesImage(umbrella));
+      // }
     }
   }
 
@@ -48,11 +56,13 @@
     //todo: change to what is needed in GitHub
     const imgBasePath = ""; //"./"; 
 
-  function renderClothesImage(item) {
-    const pic = document.createElement("li"); //do I want this as an li?
+  function renderClothesImage(parentElement, item) {
+    const pic = document.createElement('li'); 
+    console.log("in renderClothesImage", pic.nodeType, item); //says 1, which is an element node
     pic.myName = item.name;
     //pic.classList.add('clothes'); //for CSS, remove if don't use it
     pic.innerHTML = `<div class="image"><img src="${imgBasePath}${item.imgSrc}" alt="${item.imgAlt}"></div>`;
+    parentElement.appendChild(pic);
   }
 
   
