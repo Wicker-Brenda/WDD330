@@ -53,12 +53,13 @@ myController.init();
 
 //showWeather(); 
 
-//todo create dummy clothing items with wet or hot etc 'tags' for testing- or just use what I have, and imgAlt will show up until I have the jpg
 
-//todo write code to call render function to display clothing items in certain weather conditions
-//todo continue collecting/creating clothing imgs
+
+//todo js code to include umbrella when rainy
+//todo continue collecting/creating clothing imgs. Finalize images.
+//todo work on code to 'dress' paper doll, click or drag and drop
 //todo collect/create weather images (sun, wind, clouds, rain, temp up and down arrows, etc). Consider using icons that come with openweathermap.org
 //todo display daily.weather.icon- look up how to get icons
 //todo: optional stretch, IF decide to toggle to tommorrow's weather, use daily[1]
-//todo: get geolocation for lat and long of user, update API call using that 
+
 //todo: optional stretch: display current location (city, state) with date
