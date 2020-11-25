@@ -7,8 +7,6 @@ const clothesList = [
         imgSrc: "images/dummy.jpg", // "short_sleeve.jpg", //img has a width and height
         imgAlt: "Image of short sleeve shirt",
         //only use short sleeves ABOVE lowTemp, write if...else paired with long sleeves (unless a Sunday...check that first)
-        lowTemp: 50,
-        highTemp: 200,
         //can use if ABOVE pop
         rainPop: 0,
         //where to draw the image
@@ -20,8 +18,6 @@ const clothesList = [
         imgSrc: "images/dummy.jpg", // "long_sleeve.jpg",
         imgAlt: "Image of long sleeve shirt",
         //only use long sleeve shirt BELOW highTemp
-        lowTemp: -200,
-        highTemp: 49,
         //can use if ABOVE pop
         rainPop: 0,
         xcoord: 1,
@@ -31,9 +27,6 @@ const clothesList = [
         name: "Light Jacket",
         imgSrc: "images/dummy.jpg", // "light_jacket.jpg",
         imgAlt: "Image of light jacket",
-        //how to do a range? Use between low and high temp, but how to call? if < 40 && > 60
-        lowTemp: 40,
-        highTemp: 60,
         //can use if ABOVE pop
         rainPop: 0,
         xcoord: 1,
@@ -43,9 +36,6 @@ const clothesList = [
         name: "Coat",
         imgSrc: "images/dummy.jpg", // "coat.jpg",
         imgAlt: "Image of coat",
-        //range- use if BELOW highTemp
-        lowTemp: -200,
-        highTemp: 39,
         //can use if ABOVE pop
         rainPop: 0,
         xcoord: 1,
@@ -57,8 +47,6 @@ const clothesList = [
         imgAlt: "Image of umbrella",
         //use daily.rain and/or daily.pop (probability of precipitation)
         //use if ABOVE pop
-        lowTemp: -200,
-        highTemp: 200,
         rainPOP: 24,
         xcoord: 1,
         ycoord: 1
@@ -67,8 +55,6 @@ const clothesList = [
         name: "Shorts",
         imgSrc: "images/dummy.jpg", // "shorts.jpg",
         imgAlt: "Image of shorts",
-        lowTemp: 55,
-        highTemp: 200,
         //can use if ABOVE pop
         rainPop: 0,
         xcoord: 1,
@@ -78,8 +64,6 @@ const clothesList = [
         name: "Pants",
         imgSrc: "images/dummy.jpg", // "pants.jpg",
         imgAlt: "Image of pants",
-        lowTemp: -200,
-        highTemp: 54,
         //can use if ABOVE pop
         rainPop: 0,
         xcoord: 1,
@@ -90,8 +74,6 @@ const clothesList = [
         name: "Sandals",
         imgSrc: "images/dummy.jpg", // "sandals.jpg",
         imgAlt: "Image of sandals",
-        lowTemp: 51,
-        highTemp: 200,
         //can use if ABOVE pop
         rainPop: 0,
         xcoord: 1,
@@ -101,8 +83,6 @@ const clothesList = [
         name: "Sneakers",
         imgSrc: "images/dummy.jpg", // "sneakers.jpg",
         imgAlt: "Image of sneakers",
-        lowTemp: -200,
-        highTemp: 50,
         //can use if ABOVE pop
         rainPop: 0,
         xcoord: 1,
@@ -112,8 +92,6 @@ const clothesList = [
         name: "Socks",
         imgSrc: "images/dummy.jpg", // "socks.jpg",
         imgAlt: "Image of socks",
-        lowTemp: -200,
-        highTemp: 50,
         //can use if ABOVE pop
         rainPop: 0,
         xcoord: 1,
@@ -124,8 +102,6 @@ const clothesList = [
         name: "Hat",
         imgSrc: "images/dummy.jpg", // "hat.jpg",
         imgAlt: "Image of winter hat",
-        lowTemp: -200,
-        highTemp: 30,
         //can use if ABOVE pop
         rainPop: 0,
         xcoord: 1,
@@ -136,8 +112,6 @@ const clothesList = [
         name: "Scarf",
         imgSrc: "images/dummy.jpg", // "scarf.jpg",
         imgAlt: "Image of winter scarf",
-        lowTemp: -200,
-        highTemp: 30,
         //can use if ABOVE pop
         rainPop: 0,
         xcoord: 1,
@@ -148,8 +122,6 @@ const clothesList = [
         name: "Mittens",
         imgSrc: "images/dummy.jpg", // "mittens.jpg",
         imgAlt: "Image of winter mittens",
-        lowTemp: -200,
-        highTemp: 30,
         //can use if ABOVE pop
         rainPop: 0,
         xcoord: 1,

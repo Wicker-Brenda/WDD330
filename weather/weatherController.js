@@ -91,7 +91,7 @@ export class WeatherController { //not providing an export with the default keyw
 
     //for weather matching, use lowTemp/highTemp <= feelsDay, etc
     //let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.name === "Hot Weather"); 
-    let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.name === "Hot Weather"); 
+    let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.lowTemp <= feelsMorn && outfit.highTemp >= feelsDay); 
     console.log(currentOutfit);
 
     //let currentOutfitClothing = currentOutfit.clothing; 
