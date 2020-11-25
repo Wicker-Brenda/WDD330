@@ -39,7 +39,7 @@
       console.log(typeof parentElement); //object
       console.log(parentElement, currentOutfit, currentClothing);
       
-      parentElement.appendChild(renderClothesImage(currentOutfit));
+      renderClothesImage(parentElement, currentOutfit);
       currentClothing.forEach(item => {
         //parentElement.appendChild(renderClothesImage(item));
         console.log(item);

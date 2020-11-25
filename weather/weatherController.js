@@ -90,24 +90,28 @@ export class WeatherController { //not providing an export with the default keyw
     console.log(clothes);
 
     //for weather matching, use lowTemp/highTemp <= feelsDay, etc
+    //let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.name === "Hot Weather"); 
     let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.name === "Hot Weather"); 
     console.log(currentOutfit);
-    let currentOutfitClothing = currentOutfit.clothing; 
-    console.log(currentOutfitClothing); //array
+
+    //let currentOutfitClothing = currentOutfit.clothing; 
+    //console.log(currentOutfitClothing); //array
+
     //pull clothesList objects to match names from currentOutfit
-    //todo: fix error, current clothing is undefined
-    let currentClothing = currentOutfit.clothing.forEach(name => {
-        clothes.filter(clothesItem => clothesItem.name === name);
+    let currentClothing = [];
+    currentOutfit.clothing.forEach(name => {
+        let item = clothes.find(clothesItem => clothesItem.name === name);
+        currentClothing.push(item);
+        
      });
-     console.log(currentClothing);
+     console.log(currentClothing); 
     
-    //pass in currentOutfit and currentClothes
+    
 
 
-    console.table(this.outfits);
+    //console.table(this.outfits);
 
-    //test render
-    // this.weatherView.renderOutfit(parent, clothes, wet, umbrella); 
+    //pass in currentOutfit and currentClothes to the view
     this.weatherView.renderOutfit(parentElement, currentOutfit, currentClothing); 
   }
 
