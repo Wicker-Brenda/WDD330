@@ -69,10 +69,13 @@ export class WeatherController { //not providing an export with the default keyw
   showOutfit(daily, current, parentElement) { //pass in daily, current, then write conditional code to determine which render function to call
     //clear out anything already in the innerHTML
     
-
+    //weather variables 
     let feelsMorn = daily[0].feels_like.morn;
+    let currentTemp = current.temp;
     let feelsDay = daily[0].feels_like.day;
-    console.log(feelsMorn, feelsDay);
+    let rainProb = daily[0].pop; //probability of precipition
+    let main = current.weather[0].main; //current main weather condition
+    console.log(feelsMorn, currentTemp, feelsDay, rainProb, main);
 
     //conditional logic to select outfit from outfitList based on weather, put in currentOutfit
     //print out image, put clothing from outfit into array (is this needed, or can i use currentOutfit.clothing?)
@@ -89,9 +92,12 @@ export class WeatherController { //not providing an export with the default keyw
     let clothes = this.outfits.getClothesList();
     console.log(clothes);
 
-    //for weather matching, use lowTemp/highTemp <= feelsDay, etc
+    //Select the appropriate outfit for the weather conditions
     //let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.name === "Hot Weather"); 
-    let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.lowTemp <= feelsMorn && outfit.highTemp >= feelsDay); 
+    //todo: fix undefined error- problem with weather breakpoints, with feelsMorn range was outside of possibilities
+    //let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.lowTemp <= feelsMorn && outfit.highTemp >= feelsDay); 
+    let currentOutfit = outfits.find(outfit => outfit.lowTemp <= currentTemp && outfit.highTemp >= feelsDay); 
+    
     console.log(currentOutfit);
 
     //let currentOutfitClothing = currentOutfit.clothing; 
@@ -101,16 +107,18 @@ export class WeatherController { //not providing an export with the default keyw
     let currentClothing = [];
     currentOutfit.clothing.forEach(name => {
         let item = clothes.find(clothesItem => clothesItem.name === name);
-        currentClothing.push(item);
-        
+        currentClothing.push(item);        
      });
-     console.log(currentClothing); 
+
+    //todo: determine if this should be based on daily weather instead, if so change weatherView display to match 
+    //add umbrella to currentClothing array based on current weather
+    if(main === "Thunderstorm" || main === "Drizzle" || main === "Rain" || rainProb <= 25) {
+        let item = clothes.find(clothesItem => clothesItem.name === "Umbrella");
+        currentClothing.push(item);
+    }
+
+    console.log(currentClothing); 
     
-    
-
-
-    //console.table(this.outfits);
-
     //pass in currentOutfit and currentClothes to the view
     this.weatherView.renderOutfit(parentElement, currentOutfit, currentClothing); 
   }
@@ -141,8 +149,3 @@ export class WeatherController { //not providing an export with the default keyw
 //   })
 // }
 
-
-
-//from inside show outfit
-// let outfitDiv = document.getElementById("outfit");  //don't think I need this, outfit is current the parent element
-//     outfitDiv.innerHTML = ''; //pretty sure don't need this either

@@ -9,22 +9,22 @@
         document.getElementById("date").innerHTML = '<h2>' + date.toDateString() + '</h2>';
     
         let temp = document.getElementById("temp");
-        let currentTemp = current.temp;
+        let currentTemp = Math.round(current.temp);
         temp.innerHTML = 'The current temperature is ' + currentTemp;
         
         let hiLow = document.getElementById("hilow");
-        let max = daily[0].temp.max;
-        let min = daily[0].temp.min;
+        let max = Math.round(daily[0].temp.max);
+        let min = Math.round(daily[0].temp.min);
         hiLow.innerHTML = 'The high today will be ' + max + '. The low today will be ' + min + '.'
     
         let conditions = document.getElementById("conditions");
-        let main = daily[0].weather[0].main;
-        let desc = daily[0].weather[0].description;
+        let main = current.weather[0].main;
+        let desc = current.weather[0].description;
         conditions.innerHTML = '<h2>' + main + '</h2><p>' + desc + '</p>';
     
         let feels = document.getElementById("feels");
         //let feelsMorn = daily[0].feels_like.morn;
-        let feelsDay = daily[0].feels_like.day;
+        let feelsDay = Math.round(daily[0].feels_like.day);
         feels.innerHTML = '<p> It feels like ' + feelsDay + '</p>';
 
          
