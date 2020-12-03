@@ -1,1 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab&display=swap');
+
 /* root styles: */
+
+
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Roboto Slab', serif;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    /* make the image automatically resize to the parent div element size */
+    object-fit: contain;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    justify-content: center;
+    /* 3 columns of same width: */
+    /* grid-template-columns: 200px 200px 200px;  this made the grid overflow the screen on mobile devices*/
+    grid-template-columns: auto auto auto;
+    /* change row height as needed */
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 1em;
+
+
+
+
+
+    /* display: flex;
+    flex-wrap: wrap;  removed flex*/
+
+}
+
+.outfit div {
+    /* do I want this? */
+    padding: 0 0.5em;
+}
+
+.outfit li > p {
+    text-align: center;
+
+}
+
+li {
+    
+
+    /* margin-top: 50px; */
+    /* margin-bottom: 50px; */
+    /* padding-bottom: 50px; */
+
+    /* display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top; */
+    /* relative position so hidden pic can be absolutely positioned */
+    /* position: relative; */
+}
+
+li:first-child {
+    grid-row-start: 1;
+    grid-row-end: 4;
+}
+
+/* containing div inside each li */
+.pic {
+    max-width: 200px; 
+    /* display: flex;
+    flex-wrap: wrap;
+    flex: 1; */
+} 
+
+/* when p is displayed, it ruins flex overlay */
+/* .hidden {
+    display: none;
+} */
+
+/* class for clothing images div*/
+.clothing {
+    /* change this to final size after testing */
+    /* max-width: 200px;  */
+    /* flex: 1;  this changed it to staggered in the center but still no wrap*/
+    /* display: flex;
+    flex-wrap: wrap; */
+
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+/* class for color clothing images div */
+.color {
+    max-width: 200px;
+    position: absolute;
+    /* this works UNTIL you put in margin/padding on the li, or add a br to the li, then it runs above the first photo */
+}
+
+/* .outfit li > img {
+    max-width: 20px;
+} */
+
+/* IF use separate rules for larger devices, instead of a fluid layout: */
+@media all and (min-width:600px) {
+
+} 

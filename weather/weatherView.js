@@ -6,7 +6,7 @@
         
         //display info as a test 
         let date = new Date();
-        document.getElementById("date").innerHTML = '<h2>' + date.toDateString() + '</h2>';
+        document.getElementById("date").innerHTML = '<h2>Today is ' + date.toDateString() + '</h2>';
     
         let temp = document.getElementById("temp");
         let currentTemp = Math.round(current.temp);
@@ -56,12 +56,17 @@
     //todo: change to what is needed in GitHub
     const imgBasePath = ""; //"./"; 
 
-  function renderClothesImage(parentElement, item) {
+  function renderClothesImage(parentElement, item) { //, sequence 1 of 8 etc position 
     const pic = document.createElement('li'); 
     console.log("in renderClothesImage", pic.nodeType, item); //says 1, which is an element node
     pic.myName = item.name;
-    //pic.classList.add('clothes'); //for CSS, remove if don't use it
-    pic.innerHTML = `<div class="image"><img src="${imgBasePath}${item.imgSrc}" alt="${item.imgAlt}"></div>`;
+    pic.setAttribute('data-name', item.name); //use to get audio
+    //pic.classList.add('hidden'); //for CSS, remove if don't use it
+    pic.innerHTML = `<div class="pic">
+    <div class="clothing"><img src="${imgBasePath}${item.imgSrc}" alt="${item.imgAlt}"></div>
+    <!-- <div class="color"><img src="${imgBasePath}${item.img2Src}" alt="${item.imgAlt}"></div> -->
+    <p class="name hidden" style="anim-delay:">${item.name}</p>
+    </div>`;
     parentElement.appendChild(pic);
   }
 

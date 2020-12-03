@@ -112,7 +112,7 @@ export class WeatherController { //not providing an export with the default keyw
 
     //todo: determine if this should be based on daily weather instead, if so change weatherView display to match 
     //add umbrella to currentClothing array based on current weather
-    if(main === "Thunderstorm" || main === "Drizzle" || main === "Rain" || rainProb <= 25) {
+    if(main === "Thunderstorm" || main === "Drizzle" || main === "Rain" || rainProb >= 25) {
         let item = clothes.find(clothesItem => clothesItem.name === "Umbrella");
         currentClothing.push(item);
     }

@@ -4,7 +4,8 @@
 const clothesList = [
       {
         name: "Short Sleeve Shirt",
-        imgSrc: "images/dummy.jpg", // "short_sleeve.jpg", //img has a width and height
+        imgSrc: "images/short_sleeve.jpg", //img has a width and height
+        img2Src: "images/dummy2.jpg", 
         imgAlt: "Image of short sleeve shirt",
         //only use short sleeves ABOVE lowTemp, write if...else paired with long sleeves (unless a Sunday...check that first)
         //can use if ABOVE pop
@@ -15,7 +16,8 @@ const clothesList = [
       },
       {
         name: "Long Sleeve Shirt",
-        imgSrc: "images/dummy.jpg", // "long_sleeve.jpg",
+        imgSrc: "images/long_sleeve.jpg",
+        img2Src: "images/dummy2.jpg", 
         imgAlt: "Image of long sleeve shirt",
         //only use long sleeve shirt BELOW highTemp
         //can use if ABOVE pop
@@ -26,6 +28,7 @@ const clothesList = [
       {
         name: "Light Jacket",
         imgSrc: "images/dummy.jpg", // "light_jacket.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of light jacket",
         //can use if ABOVE pop
         rainPop: 0,
@@ -35,6 +38,7 @@ const clothesList = [
       {
         name: "Coat",
         imgSrc: "images/dummy.jpg", // "coat.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of coat",
         //can use if ABOVE pop
         rainPop: 0,
@@ -44,6 +48,7 @@ const clothesList = [
       {
         name: "Umbrella",
         imgSrc: "images/dummy.jpg", // "umbrella.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of umbrella",
         //use daily.rain and/or daily.pop (probability of precipitation)
         //use if ABOVE pop
@@ -54,6 +59,7 @@ const clothesList = [
       {
         name: "Shorts",
         imgSrc: "images/dummy.jpg", // "shorts.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of shorts",
         //can use if ABOVE pop
         rainPop: 0,
@@ -62,7 +68,8 @@ const clothesList = [
       },
       {
         name: "Pants",
-        imgSrc: "images/dummy.jpg", // "pants.jpg",
+        imgSrc: "images/pants.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of pants",
         //can use if ABOVE pop
         rainPop: 0,
@@ -72,7 +79,8 @@ const clothesList = [
       {
         //everyday sandals
         name: "Sandals",
-        imgSrc: "images/dummy.jpg", // "sandals.jpg",
+        imgSrc: "images/sandals.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of sandals",
         //can use if ABOVE pop
         rainPop: 0,
@@ -82,6 +90,7 @@ const clothesList = [
       {
         name: "Sneakers",
         imgSrc: "images/dummy.jpg", // "sneakers.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of sneakers",
         //can use if ABOVE pop
         rainPop: 0,
@@ -91,6 +100,7 @@ const clothesList = [
       {
         name: "Socks",
         imgSrc: "images/dummy.jpg", // "socks.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of socks",
         //can use if ABOVE pop
         rainPop: 0,
@@ -101,6 +111,7 @@ const clothesList = [
         //use with bitterly cold, below 30
         name: "Hat",
         imgSrc: "images/dummy.jpg", // "hat.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of winter hat",
         //can use if ABOVE pop
         rainPop: 0,
@@ -111,6 +122,7 @@ const clothesList = [
         //use with bitterly cold, below 30
         name: "Scarf",
         imgSrc: "images/dummy.jpg", // "scarf.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of winter scarf",
         //can use if ABOVE pop
         rainPop: 0,
@@ -121,6 +133,7 @@ const clothesList = [
         //use with bitterly cold, below 30
         name: "Mittens",
         imgSrc: "images/dummy.jpg", // "mittens.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of winter mittens",
         //can use if ABOVE pop
         rainPop: 0,
@@ -135,8 +148,9 @@ const clothesList = [
       {
         //pic will include short sleeves, shorts, sandals
         //breakpoint: feels_like above 70
-        name: "Hot Weather",
+        name: "Hot Weather Outfit",
         imgSrc: "images/dummy.jpg", // "hot.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of hot weather outfit",
         //shirt: clothesList.name == ""  //not sure how to add in each clothesList item here
         clothing: ["Short Sleeve Shirt", "Shorts", "Sandals"],
@@ -146,8 +160,9 @@ const clothesList = [
       {
         //pic will include short sleeves, pants, sandals
         //breakpoint: feels_like between 60-70
-        name: "Mild Weather",
-        imgSrc: "images/dummy.jpg", // "mild.jpg",
+        name: "Mild Weather Outfit",
+        imgSrc: "images/mild.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of mild weather outfit",
         clothing: ["Short Sleeve Shirt", "Pants", "Sandals"],
         lowTemp: 60,
@@ -156,8 +171,9 @@ const clothesList = [
       {
         //pic will include short sleeves, pants, socks and shoes, light jacket
         //low will be cool but high will be warm, breakpoint: feels_like between 45-70
-        name: "Cool to Warm Weather",
+        name: "Cool to Warm Weather Outfit",
         imgSrc: "images/dummy.jpg", // "cool_warm.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of cool to warm weather outfit",
         clothing: ["Short Sleeve Shirt", "Pants", "Socks", "Sneakers", "Light Jacket"],
         lowTemp: 45,
@@ -167,8 +183,9 @@ const clothesList = [
       {
         //pic will include long sleeves, pants, socks and shoes
         //breakpoint: feels_like between 50-60
-        name: "Cool Weather",
+        name: "Cool Weather Outfit",
         imgSrc: "images/dummy.jpg", // "cool.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of cool weather outfit",
         clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers"],
         lowTemp: 50,
@@ -177,8 +194,9 @@ const clothesList = [
       {
         //pic will include long sleeves, pants, socks and shoes, light jacket
         //breakpoint: feels_like between 40-50
-        name: "Cold Weather",
+        name: "Cold Weather Outfit",
         imgSrc: "images/dummy.jpg", // "cold.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of cold weather outfit",
         clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Light Jacket"],
         lowTemp: 40,
@@ -187,8 +205,9 @@ const clothesList = [
       {
         //pic will include long sleeves, pants, socks and shoes, coat
         //breakpoint: feels_like between 30-40
-        name: "Very Cold Weather",
+        name: "Very Cold Weather Outfit",
         imgSrc: "images/dummy.jpg", // "very_cold.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of very cold weather outfit",
         clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Coat"],
         lowTemp: 30,
@@ -197,8 +216,9 @@ const clothesList = [
       {
         //pic will include long sleeves, pants, socks and shoes, coat, hat, scarf, gloves/mittens
         //breakpoint: feels_like below 30
-        name: "Bitterly Cold Weather",
+        name: "Bitterly Cold Weather Outfit",
         imgSrc: "images/dummy.jpg", // "bitterly_cold.jpg",
+        img2Src: "images/dummy2.jpg",
         imgAlt: "Image of bitterly cold weather outfit",
         clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Coat", "Hat", "Scarf", "Mittens"],
         lowTemp: -200,
