@@ -12,10 +12,13 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
+    
 }
 
-h1, h2 {
-    font-family: 'Roboto Slab', serif;
+.wrapper {
+    max-width: 600px;
+    margin: auto;
+    padding: 10px;
 }
 
 img {
@@ -25,6 +28,51 @@ img {
     object-fit: contain;
 }
 
+/* make parent grid for header */
+.header {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 1em;
+    grid-template-areas: "title title title"
+                         "date conditions hilow"
+                         "subtitle subtitle subtitle";    
+}
+
+h1, h2 {
+    font-family: 'Roboto Slab', serif;
+}
+
+h1 {
+    grid-area: title;
+}
+
+#subtitle {
+    grid-area: subtitle;
+}
+
+#date {
+    grid-area: date;
+    text-align: center;
+}
+
+.temp {
+    /* set the temp numeral to be larger but responsive */
+    font-size: 10vw;
+}
+
+#conditions {
+    grid-area: conditions;
+    /* max-width: 150px; */
+    text-align: center;
+}
+
+#hilow {
+    grid-area: hilow;
+}
+
+/* ul is parent grid for clothing items in li. */
 ul {
     padding: 0;
     list-style-type: none;
@@ -32,8 +80,8 @@ ul {
     justify-content: center;
     /* 3 columns of same width: */
     /* grid-template-columns: 200px 200px 200px;  this made the grid overflow the screen on mobile devices*/
-    grid-template-columns: auto auto auto;
-    /* change row height as needed */
+    grid-template-columns: 1fr 1fr 1fr;
+    /* change row height as needed, may not want auto */
     grid-template-rows: repeat(3, auto);
     grid-gap: 1em;
 
@@ -46,15 +94,14 @@ ul {
 
 }
 
-.outfit div {
-    /* do I want this? */
+
+/* .outfit div {
     padding: 0 0.5em;
 }
 
-.outfit li > p {
+#outfit li > p {
     text-align: center;
-
-}
+} */
 
 li {
     
@@ -75,7 +122,7 @@ li {
 
 li:first-child {
     grid-row-start: 1;
-    grid-row-end: 4;
+    grid-row-end: 3;
 }
 
 /* containing div inside each li */
@@ -115,7 +162,7 @@ li:first-child {
     max-width: 20px;
 } */
 
-/* IF use separate rules for larger devices, instead of a fluid layout: */
-@media all and (min-width:600px) {
+/* This is not needed, since using a fluid layout, but if needed to change rules for larger devices, would use: */
+/* @media all and (min-width:600px) {
 
-} 
+}  */

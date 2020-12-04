@@ -2,6 +2,7 @@ import { getLocation } from './utilities.js';
 import Weather from './weather.js';
 import WeatherView from './weatherView.js';
 import Outfits from './outfits.js';
+import Icons from './icons.js';
 
 // Weather controller
 export class WeatherController { //not providing an export with the default keyword, removed it
@@ -19,6 +20,7 @@ export class WeatherController { //not providing an export with the default keyw
     this.weather = new Weather();  //model
     this.weatherView = new WeatherView();  //view
     this.outfits = new Outfits(); //outfits class with clothing arrays
+    this.icons = new Icons(); //Icons class with weather icons array
   }
 
   async init() {
@@ -60,8 +62,9 @@ export class WeatherController { //not providing an export with the default keyw
     const daily = data.daily;  
     const current = data.current;
     console.log(daily, current);
+    const icon = this.getIcon(current);
     // render the list to html
-    this.weatherView.renderWeather(daily, current, this.parentElement);
+    this.weatherView.renderWeather(daily, current, this.parentElement, icon);
     this.showOutfit(daily, current, this.parentElement);
   }
 
@@ -123,8 +126,20 @@ export class WeatherController { //not providing an export with the default keyw
     this.weatherView.renderOutfit(parentElement, currentOutfit, currentClothing); 
   }
 
+  getIcon(current) {
+    let main = current.weather[0].main; //current main weather condition
+    let icons = this.icons.getWeatherIcons();
 
-}
+    //todo: fix error, icon is returning null
+    let icon= icons.find(x => x.name === main);
+    //todo: add code to use Mist if there is no matching name for main, use some() first to test if there is a match.  
+    // if(icon = null) icon = icons.find(x => x.name === "Mist");
+    console.log("in getIcon", main, icons, icon);
+    return icon;
+  }
+
+
+} //end of class
 
 
 // let feels = document.getElementById("feels");

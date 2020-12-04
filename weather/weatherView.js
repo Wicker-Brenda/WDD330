@@ -1,16 +1,25 @@
+  //image path
+    //todo: change to what is needed in GitHub
+    const imgBasePath = ""; //"./"; 
+  
   // Weather View handler
   export default class WeatherView {
     //todo write code to render the details to HTML, in outfits.js 
-    renderWeather(daily, current, weatherElement) {
-        console.log("in renderWeather", daily, current, weatherElement); 
+    renderWeather(daily, current, weatherElement, icon) {
+        console.log("in renderWeather", daily, current, weatherElement, icon); 
         
-        //display info as a test 
+        //display weather info in the header 
         let date = new Date();
-        document.getElementById("date").innerHTML = '<h2>Today is ' + date.toDateString() + '</h2>';
-    
-        let temp = document.getElementById("temp");
         let currentTemp = Math.round(current.temp);
-        temp.innerHTML = 'The current temperature is ' + currentTemp;
+        let feelsDay = Math.round(daily[0].feels_like.day);
+        document.getElementById("date").innerHTML = 
+            `<h2>${date.toDateString()}</h2>
+            <p><span class="temp">${currentTemp}</span><br>
+            feels like: ${feelsDay}</p>`;
+    
+        // let temp = document.getElementById("temp");
+        // let currentTemp = Math.round(current.temp);
+        // temp.innerHTML = 'The current temperature is <span class="temp">' + currentTemp + '</span>';
         
         let hiLow = document.getElementById("hilow");
         let max = Math.round(daily[0].temp.max);
@@ -18,14 +27,18 @@
         hiLow.innerHTML = 'The high today will be ' + max + '. The low today will be ' + min + '.'
     
         let conditions = document.getElementById("conditions");
-        let main = current.weather[0].main;
+        //let main = current.weather[0].main;
         let desc = current.weather[0].description;
-        conditions.innerHTML = '<h2>' + main + '</h2><p>' + desc + '</p>';
-    
-        let feels = document.getElementById("feels");
-        //let feelsMorn = daily[0].feels_like.morn;
-        let feelsDay = Math.round(daily[0].feels_like.day);
-        feels.innerHTML = '<p> It feels like ' + feelsDay + '</p>';
+        //let currentIcon = current.weather[0].icon; //just returns the icon code, would need to send out a request for it each time
+        //conditions.innerHTML = '<h2>' + main + '</h2><p>' + desc + '</p>';
+        conditions.innerHTML = `<img src="${imgBasePath}${icon.imgSrc}" alt="${icon.imgAlt}"></img>${desc}`;
+
+        //<div class="color"><img src="${imgBasePath}${item.img2Src}" alt="${item.imgAlt}"></div> 
+          
+        // let feels = document.getElementById("feels");
+        // //let feelsMorn = daily[0].feels_like.morn;
+        // let feelsDay = Math.round(daily[0].feels_like.day);
+        // feels.innerHTML = '<p> It feels like ' + feelsDay + '</p>';
 
          
   
@@ -50,11 +63,9 @@
       //   parent.appendChild(renderClothesImage(umbrella));
       // }
     }
-  }
+  }//end class
 
-    //image path
-    //todo: change to what is needed in GitHub
-    const imgBasePath = ""; //"./"; 
+    
 
   function renderClothesImage(parentElement, item) { //, sequence 1 of 8 etc position 
     const pic = document.createElement('li'); 
