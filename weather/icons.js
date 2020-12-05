@@ -35,6 +35,11 @@ const weatherIcons = [
         name: "Mist",
         imgSrc: "images/mist.png", 
         imgAlt: "mist icon"
+    },
+    {
+        name: "Arrow",
+        imgSrc: "images/arrows.png",
+        imgAlt: "arrows icon"
     }
 ]
 

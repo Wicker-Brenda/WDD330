@@ -28,24 +28,63 @@ img {
     object-fit: contain;
 }
 
+h1, h2 {
+    font-family: 'Roboto Slab', serif;
+}
+
 /* make parent grid for header */
 .header {
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(3, auto);
+    /* grid-template-rows: repeat(3, auto); */
     grid-gap: 1em;
+    align-items: stretch;
     grid-template-areas: "title title title"
                          "date conditions hilow"
                          "subtitle subtitle subtitle";    
 }
 
-h1, h2 {
-    font-family: 'Roboto Slab', serif;
+.header > div {
+    text-align: center;
+    max-width: 100%;
+    /* display: grid; */
+    object-fit: scale-down;
 }
 
-h1 {
+/* force the grid divs to be square responsively  */
+.header > div::before {
+    content: "";
+    padding-bottom: 100%;
+    /* display: block; */
+    width: 0;
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+}
+
+/* .header > div::before,
+.header > div > img {
+    grid-area: 1 / 1 / 2 / 2;
+} */
+
+.header > div > img {
+    /* object-fit: cover; */
+    /* width: 100%; */
+    max-width: 100%;
+    height: auto;
+    /* max-height: 100%; */
+    object-fit: contain;
+    /* object-fit: scale-down; */
+}
+
+.header > *:first-child {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+}
+
+#title {
     grid-area: title;
+    /* text-align: center; */
 }
 
 #subtitle {
@@ -54,22 +93,24 @@ h1 {
 
 #date {
     grid-area: date;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .temp {
     /* set the temp numeral to be larger but responsive */
     font-size: 10vw;
+    font-family: 'Roboto Slab', serif;
 }
 
 #conditions {
     grid-area: conditions;
     /* max-width: 150px; */
-    text-align: center;
+    /* text-align: center; */
 }
 
 #hilow {
     grid-area: hilow;
+    /* text-align: center; */
 }
 
 /* ul is parent grid for clothing items in li. */
@@ -122,7 +163,7 @@ li {
 
 li:first-child {
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 5;
 }
 
 /* containing div inside each li */

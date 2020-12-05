@@ -63,8 +63,10 @@ export class WeatherController { //not providing an export with the default keyw
     const current = data.current;
     console.log(daily, current);
     const icon = this.getIcon(current);
+    const arrow = this.getArrow();
+    //const arrow = this.icons.getWeatherIcons.find(icon => icon.name === "Arrow");
     // render the list to html
-    this.weatherView.renderWeather(daily, current, this.parentElement, icon);
+    this.weatherView.renderWeather(daily, current, this.parentElement, icon, arrow);
     this.showOutfit(daily, current, this.parentElement);
   }
 
@@ -138,7 +140,11 @@ export class WeatherController { //not providing an export with the default keyw
     return icon;
   }
 
-
+  getArrow() {
+    let icons = this.icons.getWeatherIcons();
+    let arrow = icons.find(icon => icon.name === "Arrow");
+    return arrow;
+  }
 } //end of class
 
 

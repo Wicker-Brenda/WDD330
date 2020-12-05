@@ -5,33 +5,28 @@
   // Weather View handler
   export default class WeatherView {
     //todo write code to render the details to HTML, in outfits.js 
-    renderWeather(daily, current, weatherElement, icon) {
-        console.log("in renderWeather", daily, current, weatherElement, icon); 
+    renderWeather(daily, current, weatherElement, icon, arrow) {
+        console.log("in renderWeather", daily, current, weatherElement, icon, arrow); 
         
         //display weather info in the header 
         let date = new Date();
         let currentTemp = Math.round(current.temp);
         let feelsDay = Math.round(daily[0].feels_like.day);
         document.getElementById("date").innerHTML = 
-            `<h2>${date.toDateString()}</h2>
+            `<p>${date.toDateString()}</p>
             <p><span class="temp">${currentTemp}</span><br>
             feels like: ${feelsDay}</p>`;
-    
-        // let temp = document.getElementById("temp");
-        // let currentTemp = Math.round(current.temp);
-        // temp.innerHTML = 'The current temperature is <span class="temp">' + currentTemp + '</span>';
-        
+
+        let conditions = document.getElementById("conditions");
+        let desc = current.weather[0].description;
+        conditions.innerHTML = `<img src="${imgBasePath}${icon.imgSrc}" alt="${icon.imgAlt}"></img><p>${desc}</p>`;
+       
         let hiLow = document.getElementById("hilow");
         let max = Math.round(daily[0].temp.max);
         let min = Math.round(daily[0].temp.min);
-        hiLow.innerHTML = 'The high today will be ' + max + '. The low today will be ' + min + '.'
+        hiLow.innerHTML = `<img src="${imgBasePath}${arrow.imgSrc}" alt="${arrow.imgAlt}"></img><p>high: ${max}</p><p>low: ${min}</p>`;
     
-        let conditions = document.getElementById("conditions");
-        //let main = current.weather[0].main;
-        let desc = current.weather[0].description;
-        //let currentIcon = current.weather[0].icon; //just returns the icon code, would need to send out a request for it each time
-        //conditions.innerHTML = '<h2>' + main + '</h2><p>' + desc + '</p>';
-        conditions.innerHTML = `<img src="${imgBasePath}${icon.imgSrc}" alt="${icon.imgAlt}"></img>${desc}`;
+        
 
         //<div class="color"><img src="${imgBasePath}${item.img2Src}" alt="${item.imgAlt}"></div> 
           
