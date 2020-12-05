@@ -99,9 +99,10 @@ export class WeatherController { //not providing an export with the default keyw
 
     //Select the appropriate outfit for the weather conditions
     //let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.name === "Hot Weather"); 
-    //todo: fix undefined error- problem with weather breakpoints, with feelsMorn range was outside of possibilities
+    //todo: fix undefined error- problem with weather breakpoints, with feelsMorn range was outside of possibilities... expand criteria and need an else case
     //let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.lowTemp <= feelsMorn && outfit.highTemp >= feelsDay); 
-    let currentOutfit = outfits.find(outfit => outfit.lowTemp <= currentTemp && outfit.highTemp >= feelsDay); 
+    //let currentOutfit = outfits.find(outfit => outfit.lowTemp <= currentTemp && outfit.highTemp >= feelsDay); //too brittle
+    let currentOutfit = outfits.find(outfit => outfit.lowTemp <= feelsDay && outfit.highTemp >= feelsDay);
     
     console.log(currentOutfit);
 
@@ -145,7 +146,7 @@ export class WeatherController { //not providing an export with the default keyw
       } 
     //use Mist if there is no matching name for main  
     } else if (main === "Clouds" || main === "Thunderstorm" || main === "Drizzle" || main === "Rain" || main === "Snow") {
-          //(!icons.includes(main === "") {
+          //(!icons.includes(main === "") //could the above be done with some() or includes()?
         icon = icons.find(x => x.name === main);
       } else {
         icon = icons.find(x => x.name === "Mist");
