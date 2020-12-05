@@ -5,6 +5,11 @@ const weatherIcons = [
         imgAlt: "sun icon in clear sky"
     },
     {
+        name: "Moon",
+        imgSrc: "images/moon.png", 
+        imgAlt: "moon icon"
+    },
+    {
         name: "Clouds",
         imgSrc: "images/cloud.png", 
         imgAlt: "cloud icon"

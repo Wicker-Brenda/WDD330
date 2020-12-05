@@ -13,9 +13,9 @@
         let currentTemp = Math.round(current.temp);
         let feelsDay = Math.round(daily[0].feels_like.day);
         document.getElementById("date").innerHTML = 
-            `<p>${date.toDateString()}</p>
-            <p><span class="temp">${currentTemp}</span><br>
-            feels like: ${feelsDay}</p>`;
+            `${date.toDateString()}<br>
+            <span class="temp">${currentTemp}&deg;</span><br>
+            feels like: ${feelsDay}`;
 
         let conditions = document.getElementById("conditions");
         let desc = current.weather[0].description;

@@ -203,7 +203,10 @@ li:first-child {
     max-width: 20px;
 } */
 
-/* This is not needed, since using a fluid layout, but if needed to change rules for larger devices, would use: */
-/* @media all and (min-width:600px) {
 
-}  */
+/* styles to accomodate larger devices */
+@media all and (min-width:601px) {
+    .temp {
+        font-size: 110px;
+    }
+}

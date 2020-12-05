@@ -131,9 +131,26 @@ export class WeatherController { //not providing an export with the default keyw
   getIcon(current) {
     let main = current.weather[0].main; //current main weather condition
     let icons = this.icons.getWeatherIcons();
-
-    //todo: fix error, icon is returning null
-    let icon= icons.find(x => x.name === main);
+    let time = current.dt;
+    let sunrise = current.sunrise;
+    let sunset = current.sunset;
+    let icon = '';
+    console.log("in getIcon", time, sunrise, sunset);
+    //differentiate between daytime clear and nightime clear
+    if(main === "Clear") {
+      if(time > sunrise && time < sunset) {
+        icon = icons.find(x => x.name === "Clear");
+      } else {
+        icon = icons.find(x => x.name === "Moon");
+      } 
+    //use Mist if there is no matching name for main  
+    } else if (main === "Clouds" || main === "Thunderstorm" || main === "Drizzle" || main === "Rain" || main === "Snow") {
+          //(!icons.includes(main === "") {
+        icon = icons.find(x => x.name === main);
+      } else {
+        icon = icons.find(x => x.name === "Mist");
+      }
+    
     //todo: add code to use Mist if there is no matching name for main, use some() first to test if there is a match.  
     // if(icon = null) icon = icons.find(x => x.name === "Mist");
     console.log("in getIcon", main, icons, icon);
