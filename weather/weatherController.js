@@ -77,6 +77,10 @@ export class WeatherController { //not providing an export with the default keyw
     //weather variables 
     let feelsMorn = daily[0].feels_like.morn;
     let currentTemp = current.temp;
+
+    //to test correct outfit being pulled, comment out feelsDay below and replace with hardwired number
+    //outfitList: Hot Weather Outfit, Mild Weather Outfit, Cool to Warm Weather Outfit, Cool Weather Outfit, Cold Weather Outfit, Very Cold Weather Outfit, Bitterly Cold Weather Outfit
+    //let feelsDay = 33;
     let feelsDay = daily[0].feels_like.day;
     let rainProb = daily[0].pop; //probability of precipition
     let main = current.weather[0].main; //current main weather condition
@@ -102,6 +106,7 @@ export class WeatherController { //not providing an export with the default keyw
     //todo: fix undefined error- problem with weather breakpoints, with feelsMorn range was outside of possibilities... expand criteria and need an else case
     //let currentOutfit = this.outfits.getOutfitList().find(outfit => outfit.lowTemp <= feelsMorn && outfit.highTemp >= feelsDay); 
     //let currentOutfit = outfits.find(outfit => outfit.lowTemp <= currentTemp && outfit.highTemp >= feelsDay); //too brittle
+    
     let currentOutfit = outfits.find(outfit => outfit.lowTemp <= feelsDay && outfit.highTemp >= feelsDay);
     
     console.log(currentOutfit);
@@ -130,6 +135,9 @@ export class WeatherController { //not providing an export with the default keyw
   }
 
   getIcon(current) {
+    //to test correct icon against each main weather condition, comment out main and use the line below it instead 
+    //let main = "Tornado";
+    //main weather conditions: Clear, Clouds, Thunderstorm, Drizzle, Rain, Snow, Mist, Smoke, Haze, Dust, Fog, Sand, Ash, Squall, Tornado
     let main = current.weather[0].main; //current main weather condition
     let icons = this.icons.getWeatherIcons();
     let time = current.dt;

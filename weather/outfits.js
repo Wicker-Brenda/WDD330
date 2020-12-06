@@ -146,6 +146,16 @@ const clothesList = [
         clothing: ["Short Sleeve Shirt", "Pants", "Sandals"],
         lowTemp: 60,
         highTemp: 69 //may need to tweak this
+      },      
+      {
+        //pic will include long sleeves, pants, socks and shoes
+        //breakpoint: feels_like between 50-60
+        name: "Cool Weather Outfit",
+        imgSrc: "images/cool.png",
+        imgAlt: "Image of cool weather outfit",
+        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers"],
+        lowTemp: 50,
+        highTemp: 59 //may need to tweak this
       },
       {
         //pic will include short sleeves, pants, socks and shoes, light jacket
@@ -157,16 +167,6 @@ const clothesList = [
         lowTemp: 45,
         highTemp: 79 //may need to tweak this- write code, high temp is above 59 (otherwise, long shirt)
 
-      },
-      {
-        //pic will include long sleeves, pants, socks and shoes
-        //breakpoint: feels_like between 50-60
-        name: "Cool Weather Outfit",
-        imgSrc: "images/cool.png",
-        imgAlt: "Image of cool weather outfit",
-        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers"],
-        lowTemp: 50,
-        highTemp: 59 //may need to tweak this
       },
       {
         //pic will include long sleeves, pants, socks and shoes, light jacket
