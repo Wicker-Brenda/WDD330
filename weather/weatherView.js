@@ -67,12 +67,12 @@
     console.log("in renderClothesImage", pic.nodeType, item); //says 1, which is an element node
     pic.myName = item.name;
     pic.setAttribute('data-name', item.name); //use to get audio
+    pic.classList.add('pic');
     //pic.classList.add('hidden'); //for CSS, remove if don't use it
-    pic.innerHTML = `<div class="pic">
-    <div class="clothing"><img src="${imgBasePath}${item.imgSrc}" alt="${item.imgAlt}"></div>
-    <!-- <div class="color"><img src="${imgBasePath}${item.img2Src}" alt="${item.imgAlt}"></div> -->
-    <p class="name hidden" style="anim-delay:">${item.name}</p>
-    </div>`;
+    pic.innerHTML = //`<div class="pic">
+    `<div class="clothing"><img src="${imgBasePath}${item.imgSrc}" alt="${item.imgAlt}"></div>
+    <span class="name hidden" style="anim-delay:">${item.name}</span>`;
+    //</div>`;
     parentElement.appendChild(pic);
   }
 

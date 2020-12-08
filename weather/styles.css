@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Roboto+Slab&display=swap');
 
 /* root styles: */
 
@@ -75,6 +75,11 @@ h1, h2 {
     /* max-height: 100%; */
     object-fit: contain;
     /* object-fit: scale-down; */
+}
+
+#conditions,
+#hilow          {
+    max-width: 80%;
 }
 
 .header > *:first-child {
@@ -169,43 +174,76 @@ li:first-child {
 /* containing div inside each li */
 .pic {
     max-width: 200px; 
-    /* display: flex;
-    flex-wrap: wrap;
-    flex: 1; */
+    /* transition: all .2s ease-in-out; */
+    /* position: relative; */
 } 
 
-.name {
-    text-align: center;
+.highlight {
+    /* transition: all .2s ease-in-out; */
+    /* transform: scale(1.25); */
+    animation-duration: 5s;
+    animation-name: highlight;
+   
 }
 
-/* when p is displayed, it ruins flex overlay */
-/* .hidden {
-    display: none;
+/* animation works and reduces but then jumps back to full size */
+@keyframes highlight {
+    0% { transform: scale(1.0, 1.0); }
+    5% { transform: scale(1.25, 1.25); }
+    /* 10% { transform: scale(1.5, 1.5); }
+    90% { transform: scale(1.5, 1.5); } */
+    95% { transform: scale(1.25, 1.25); }
+    100% { transform: scale(1.0, 1.0); }
+}
+
+/* .pic:hover {
+    transform: scale(1.25);
 } */
 
 /* class for clothing images div*/
-.clothing {
+.clothing > img {
+    
     /* change this to final size after testing */
     /* max-width: 200px;  */
-    /* flex: 1;  this changed it to staggered in the center but still no wrap*/
-    /* display: flex;
-    flex-wrap: wrap; */
-
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-}
-
-/* class for color clothing images div */
-.color {
-    max-width: 200px;
-    position: absolute;
-    /* this works UNTIL you put in margin/padding on the li, or add a br to the li, then it runs above the first photo */
+    /* position: relative; */
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 /* .outfit li > img {
     max-width: 20px;
 } */
+
+/* class for clothing items text */
+.name {
+    display: block;
+    text-align: center;
+    background-color: white;
+    padding-top: 0px;
+    /* font-weight: 600; */
+    transform: translateY(-15px);
+    /* transition: all .2s ease-in-out; */
+    /* position: absolute;
+    bottom: -10px;
+    margin: auto;  */
+    /* left: 50%; */
+}
+
+/* .name:hover {
+    transform: scale(1.25);
+} */
+
+/* .name > p {
+    padding-top: 0px;
+} */
+
+/* to hide the clothing caption */
+/* .hidden {
+    display: none;
+} */
+
+
 
 
 /* styles to accomodate larger devices */

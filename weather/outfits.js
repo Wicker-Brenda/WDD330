@@ -3,123 +3,73 @@
 //export default class Outfits {
 const clothesList = [
       {
-        name: "Short Sleeve Shirt",
+        name: "Short Sleeves",
         imgSrc: "images/short_sleeve.png", //img has a width and height
         imgAlt: "Image of short sleeve shirt"
       },
       {
-        name: "Long Sleeve Shirt",
+        name: "Long Sleeves",
         imgSrc: "images/long_sleeve.png",
-        imgAlt: "Image of long sleeve shirt",
-        //only use long sleeve shirt BELOW highTemp
-        //can use if ABOVE pop
-        rainPop: 0,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of long sleeve shirt"
       },
       {
         name: "Light Jacket",
         imgSrc: "images/light_jacket.png",
-        imgAlt: "Image of light jacket",
-        //can use if ABOVE pop
-        rainPop: 0,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of light jacket"
       },
       {
         name: "Coat",
         imgSrc: "images/coat.png",
-        imgAlt: "Image of coat",
-        //can use if ABOVE pop
-        rainPop: 0,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of coat"
       },
       {
         name: "Umbrella",
         imgSrc: "images/umbrella.png",
-        imgAlt: "Image of umbrella",
-        //use daily.rain and/or daily.pop (probability of precipitation)
-        //use if ABOVE pop
-        rainPOP: 24,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of umbrella"
       },
       {
         name: "Shorts",
         imgSrc: "images/shorts.png",
-        imgAlt: "Image of shorts",
-        //can use if ABOVE pop
-        rainPop: 0,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of shorts"
       },
       {
         name: "Pants",
         imgSrc: "images/pants.png",
-        imgAlt: "Image of pants",
-        //can use if ABOVE pop
-        rainPop: 0,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of pants"
       },
       {
         //everyday sandals
         name: "Sandals",
         imgSrc: "images/sandals.png",
-        imgAlt: "Image of sandals",
-        //can use if ABOVE pop
-        rainPop: 0,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of sandals"
       },
       {
         name: "Sneakers",
         imgSrc: "images/sneakers.png",
-        imgAlt: "Image of sneakers",
-        //can use if ABOVE pop
-        rainPop: 0,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of sneakers"
       },
       {
         name: "Socks",
         imgSrc: "images/socks.png",
-        imgAlt: "Image of socks",
-        //can use if ABOVE pop
-        rainPop: 0,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of socks"
       },
       {
         //use with bitterly cold, below 30
         name: "Hat",
         imgSrc: "images/hat.png",
-        imgAlt: "Image of winter hat",
-        //can use if ABOVE pop
-        rainPop: 0,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of winter hat"
       },
       {
         //use with bitterly cold, below 30
         name: "Scarf",
         imgSrc: "images/scarf.png",
-        imgAlt: "Image of winter scarf",
-        //can use if ABOVE pop
-        rainPop: 0,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of winter scarf"
       },
       {
         //use with bitterly cold, below 30
         name: "Mittens",
         imgSrc: "images/mittens.png",
-        imgAlt: "Image of winter mittens",
-        //can use if ABOVE pop
-        rainPop: 0,
-        xcoord: 1,
-        ycoord: 1
+        imgAlt: "Image of winter mittens"
       }
     
       //todo: (optional stretch) Sunday best dress- tights/closed toe sandals vs open-toe sandals, dress, shorts under, etc. Boy: pants/shirt/tie/dress shoes
@@ -129,41 +79,40 @@ const clothesList = [
       {
         //pic will include short sleeves, shorts, sandals
         //breakpoint: feels_like above 70
-        name: "Hot Weather Outfit",
+        name: "Hot Weather",
         imgSrc: "images/hot.png",
         imgAlt: "Image of hot weather outfit",
-        //shirt: clothesList.name == ""  //not sure how to add in each clothesList item here
-        clothing: ["Short Sleeve Shirt", "Shorts", "Sandals"],
+        clothing: ["Short Sleeves", "Shorts", "Sandals"],
         lowTemp: 70,
         highTemp: 200 
       },
       {
         //pic will include short sleeves, pants, sandals
         //breakpoint: feels_like between 60-70
-        name: "Mild Weather Outfit",
+        name: "Mild Weather",
         imgSrc: "images/mild.png",
         imgAlt: "Image of mild weather outfit",
-        clothing: ["Short Sleeve Shirt", "Pants", "Sandals"],
+        clothing: ["Short Sleeves", "Pants", "Sandals"],
         lowTemp: 60,
         highTemp: 69 //may need to tweak this
       },      
       {
         //pic will include long sleeves, pants, socks and shoes
         //breakpoint: feels_like between 50-60
-        name: "Cool Weather Outfit",
+        name: "Cool Weather",
         imgSrc: "images/cool.png",
         imgAlt: "Image of cool weather outfit",
-        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers"],
+        clothing: ["Long Sleeves", "Pants", "Socks", "Sneakers"],
         lowTemp: 50,
         highTemp: 59 //may need to tweak this
       },
       {
         //pic will include short sleeves, pants, socks and shoes, light jacket
         //low will be cool but high will be warm, breakpoint: feels_like between 45-70
-        name: "Cool to Warm Weather Outfit",
+        name: "Cool to Warm Weather",
         imgSrc: "images/cold.png", //use same img as cold weather outfit
         imgAlt: "Image of cool to warm weather outfit",
-        clothing: ["Short Sleeve Shirt", "Pants", "Socks", "Sneakers", "Light Jacket"],
+        clothing: ["Short Sleeves", "Pants", "Socks", "Sneakers", "Light Jacket"],
         lowTemp: 45,
         highTemp: 79 //may need to tweak this- write code, high temp is above 59 (otherwise, long shirt)
 
@@ -171,30 +120,30 @@ const clothesList = [
       {
         //pic will include long sleeves, pants, socks and shoes, light jacket
         //breakpoint: feels_like between 40-50
-        name: "Cold Weather Outfit",
+        name: "Cold Weather",
         imgSrc: "images/cold.png",
         imgAlt: "Image of cold weather outfit",
-        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Light Jacket"],
+        clothing: ["Long Sleeves", "Pants", "Socks", "Sneakers", "Light Jacket"],
         lowTemp: 40,
         highTemp: 49 //may need to tweak this        
       },
       {
         //pic will include long sleeves, pants, socks and shoes, coat
         //breakpoint: feels_like between 30-40
-        name: "Very Cold Weather Outfit",
+        name: "Very Cold Weather",
         imgSrc: "images/very_cold.png",
         imgAlt: "Image of very cold weather outfit",
-        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Coat"],
+        clothing: ["Long Sleeves", "Pants", "Socks", "Sneakers", "Coat"],
         lowTemp: 30,
         highTemp: 39 //may need to tweak this
       },
       {
         //pic will include long sleeves, pants, socks and shoes, coat, hat, scarf, gloves/mittens
         //breakpoint: feels_like below 30
-        name: "Bitterly Cold Weather Outfit",
+        name: "Bitterly Cold Weather",
         imgSrc: "images/bitterly_cold.png",
         imgAlt: "Image of bitterly cold weather outfit",
-        clothing: ["Long Sleeve Shirt", "Pants", "Socks", "Sneakers", "Coat", "Hat", "Scarf", "Mittens"],
+        clothing: ["Long Sleeves", "Pants", "Socks", "Sneakers", "Coat", "Hat", "Scarf", "Mittens"],
         lowTemp: -200,
         highTemp: 29 //may need to tweak this
       }

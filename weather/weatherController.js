@@ -80,7 +80,7 @@ export class WeatherController { //not providing an export with the default keyw
 
     //to test correct outfit being pulled, comment out feelsDay below and replace with hardwired number
     //outfitList: Hot Weather Outfit, Mild Weather Outfit, Cool to Warm Weather Outfit, Cool Weather Outfit, Cold Weather Outfit, Very Cold Weather Outfit, Bitterly Cold Weather Outfit
-    //let feelsDay = 33;
+    //let feelsDay = -30;
     let feelsDay = daily[0].feels_like.day;
     let rainProb = daily[0].pop; //probability of precipition
     let main = current.weather[0].main; //current main weather condition
@@ -132,7 +132,31 @@ export class WeatherController { //not providing an export with the default keyw
     
     //pass in currentOutfit and currentClothes to the view
     this.weatherView.renderOutfit(parentElement, currentOutfit, currentClothing); 
+
+    //add event listener for click event
+    this.addClothesListener();
+
+  }//end showOutfit
+
+  addClothesListener() {
+    //loop through the children of the list and attach a listener to each
+    const childrenArray = Array.from(this.parentElement.children);
+    childrenArray.forEach(child => {
+      child.addEventListener('click', e => {
+        this.highlightItem(e.currentTarget); 
+      });
+    });
   }
+
+  highlightItem(item) {
+    //remove hidden class, then add back in when done
+    //item.  
+    //add 'highlight' class, which will transform scale 1.23 for 30s? then return to normal
+    item.classList.add("highlight");
+
+  }
+
+    
 
   getIcon(current) {
     //to test correct icon against each main weather condition, comment out main and use the line below it instead 
@@ -172,6 +196,21 @@ export class WeatherController { //not providing an export with the default keyw
     return arrow;
   }
 } //end of class
+
+// remove class of highlight when transition is over to enable clicking again and repeating CSS effects
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return; //exit function if not a transform 
+  // console.log(e.propertyName);
+  // console.log(this);
+  this.classList.remove('highlight'); 
+}
+
+const ul = document.querySelector('ul'); //was using .pic, try .highlight
+ul.addEventListener('transitionend', removeTransition);
+
+// const listItems = document.querySelectorAll('li'); //was using .pic, try .highlight
+// listItems.forEach(item => addEventListener('transitionend', removeTransition));
+//pics.forEach(pic =>addEventListener('transitionend', removeTransition));
 
 
 // let feels = document.getElementById("feels");
