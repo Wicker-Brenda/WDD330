@@ -145,13 +145,16 @@ export class WeatherController { //not providing an export with the default keyw
       child.addEventListener('click', e => {
         this.highlightItem(e.currentTarget); 
       });
-    });
-  }
+      child.addEventListener('transitionend', removeTransition);
+        //console.log(e.propertyName);
+        });
+    }
+  
 
   highlightItem(item) {
     //remove hidden class, then add back in when done
     //item.  
-    //add 'highlight' class, which will transform scale 1.23 for 30s? then return to normal
+    //add 'highlight' class, which will transform scale 1.25 then return to normal
     item.classList.add("highlight");
 
   }
@@ -205,8 +208,8 @@ function removeTransition(e) {
   this.classList.remove('highlight'); 
 }
 
-const ul = document.querySelector('ul'); //was using .pic, try .highlight
-ul.addEventListener('transitionend', removeTransition);
+// const ul = document.querySelector('ul'); //was using .pic, try .highlight
+// ul.addEventListener('transitionend', removeTransition);
 
 // const listItems = document.querySelectorAll('li'); //was using .pic, try .highlight
 // listItems.forEach(item => addEventListener('transitionend', removeTransition));
