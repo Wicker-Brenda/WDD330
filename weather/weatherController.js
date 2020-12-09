@@ -145,7 +145,7 @@ export class WeatherController { //not providing an export with the default keyw
       child.addEventListener('click', e => {
         this.highlightItem(e.currentTarget); 
       });
-      child.addEventListener('transitionend', removeTransition);
+      child.addEventListener('webkitAnimationEnd', removeClass); //NOT transitionend
         //console.log(e.propertyName);
         });
     }
@@ -201,8 +201,8 @@ export class WeatherController { //not providing an export with the default keyw
 } //end of class
 
 // remove class of highlight when transition is over to enable clicking again and repeating CSS effects
-function removeTransition(e) {
-  if (e.propertyName !== 'transform') return; //exit function if not a transform 
+function removeClass(e) {
+  //if (e.propertyName !== 'transform') return; //exit function if not a transform 
   // console.log(e.propertyName);
   // console.log(this);
   this.classList.remove('highlight'); 
