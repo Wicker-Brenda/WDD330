@@ -166,9 +166,12 @@ li {
     /* position: relative; */
 }
 
+/* complete outfit pic: */
 li:first-child {
     grid-row-start: 1;
     grid-row-end: 5;
+    /* make unclickable: */
+    pointer-events: none;
 }
 
 /* containing div inside each li */
@@ -186,7 +189,7 @@ li:first-child {
     animation: highlight 2s, color 1s;
     /* background-color: #d2dae2; */
     color: #3c40c6;
-   
+    /* font-size: 1.1em; */
 }
 
 @keyframes highlight {
@@ -199,8 +202,9 @@ li:first-child {
 }
 
 @keyframes color {
-    from {color: #3c40c6;}
-    to {color: #05c46b}
+    /* changing font-size is warping the grid, don't do it */
+    from {color: #3c40c6;} 
+    to {color: #7fa191;}
 }   
 
 /* .pic:hover {
@@ -245,10 +249,10 @@ li:first-child {
     padding-top: 0px;
 } */
 
-/* to hide the clothing caption */
-/* .hidden {
+/* to hide the clothing caption  */
+ .hidden {
     display: none;
-} */
+}
 
 
 

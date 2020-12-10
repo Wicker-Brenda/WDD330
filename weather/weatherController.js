@@ -80,8 +80,8 @@ export class WeatherController { //not providing an export with the default keyw
 
     //to test correct outfit being pulled, comment out feelsDay below and replace with hardwired number
     //outfitList: Hot Weather Outfit, Mild Weather Outfit, Cool to Warm Weather Outfit, Cool Weather Outfit, Cold Weather Outfit, Very Cold Weather Outfit, Bitterly Cold Weather Outfit
-    //let feelsDay = -30;
-    let feelsDay = daily[0].feels_like.day;
+    let feelsDay = -30;
+    //let feelsDay = daily[0].feels_like.day;
     let rainProb = daily[0].pop; //probability of precipition
     let main = current.weather[0].main; //current main weather condition
     console.log(feelsMorn, currentTemp, feelsDay, rainProb, main);
@@ -173,19 +173,39 @@ export class WeatherController { //not providing an export with the default keyw
     let icon = '';
     console.log("in getIcon", time, sunrise, sunset);
     //differentiate between daytime clear and nightime clear
-    if(main === "Clear") {
-      if(time > sunrise && time < sunset) {
-        icon = icons.find(x => x.name === "Clear");
-      } else {
-        icon = icons.find(x => x.name === "Moon");
-      } 
-    //use Mist if there is no matching name for main  
-    } else if (main === "Clouds" || main === "Thunderstorm" || main === "Drizzle" || main === "Rain" || main === "Snow") {
-          //(!icons.includes(main === "") //could the above be done with some() or includes()?
-        icon = icons.find(x => x.name === main);
-      } else {
-        icon = icons.find(x => x.name === "Mist");
-      }
+    switch (main) {
+      case "Clear": 
+        if(time > sunrise && time < sunset) {
+          icon = icons.find(x => x.name === "Clear");
+        } else {
+          icon = icons.find(x => x.name === "Moon");
+        } 
+        break;
+      case "Clouds":
+      case "Thunderstorm":
+      case "Drizzle":
+      case "Rain":
+      case "Snow": 
+        icon = icons.find(x => x.name === main);  
+        break;
+      default:
+        icon = icons.find(x => x.name === "Mist");    
+        break;
+    }
+    // if(main === "Clear") {
+    //   if(time > sunrise && time < sunset) {
+    //     icon = icons.find(x => x.name === "Clear");
+    //   } else {
+    //     icon = icons.find(x => x.name === "Moon");
+    //   } 
+    // //use Mist if there is no matching name for main  
+    // } else if (main === "Clouds" || main === "Thunderstorm" || main === "Drizzle" || main === "Rain" || main === "Snow") {
+    //   //switch statement
+    //       //(!icons.includes(main === "") //could the above be done with some() or includes()?
+    //     icon = icons.find(x => x.name === main);
+    // } else {
+    //     icon = icons.find(x => x.name === "Mist");
+    // }
     
     //todo: add code to use Mist if there is no matching name for main, use some() first to test if there is a match.  
     // if(icon = null) icon = icons.find(x => x.name === "Mist");
