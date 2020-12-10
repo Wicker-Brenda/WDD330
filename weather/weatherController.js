@@ -80,8 +80,8 @@ export class WeatherController { //not providing an export with the default keyw
 
     //to test correct outfit being pulled, comment out feelsDay below and replace with hardwired number
     //outfitList: Hot Weather Outfit, Mild Weather Outfit, Cool to Warm Weather Outfit, Cool Weather Outfit, Cold Weather Outfit, Very Cold Weather Outfit, Bitterly Cold Weather Outfit
-    let feelsDay = -30;
-    //let feelsDay = daily[0].feels_like.day;
+    //let feelsDay = -30;
+    let feelsDay = daily[0].feels_like.day;
     let rainProb = daily[0].pop; //probability of precipition
     let main = current.weather[0].main; //current main weather condition
     console.log(feelsMorn, currentTemp, feelsDay, rainProb, main);
@@ -172,15 +172,17 @@ export class WeatherController { //not providing an export with the default keyw
     let sunset = current.sunset;
     let icon = '';
     console.log("in getIcon", time, sunrise, sunset);
-    //differentiate between daytime clear and nightime clear
+    
     switch (main) {
       case "Clear": 
+        //differentiate between daytime clear and nightime clear, get that icon
         if(time > sunrise && time < sunset) {
           icon = icons.find(x => x.name === "Clear");
         } else {
           icon = icons.find(x => x.name === "Moon");
         } 
         break;
+      //match icon to these main conditions  
       case "Clouds":
       case "Thunderstorm":
       case "Drizzle":
@@ -189,6 +191,7 @@ export class WeatherController { //not providing an export with the default keyw
         icon = icons.find(x => x.name === main);  
         break;
       default:
+        //all other main conditions have Mist icon
         icon = icons.find(x => x.name === "Mist");    
         break;
     }
