@@ -66,7 +66,7 @@ export class WeatherController {
     let main = current.weather[0].main; //current main weather condition
     let feelsDay = daily[0].feels_like.day; //comment this out for testing different outfits
     
-    //outfitList: Hot Weather Outfit, Mild Weather Outfit, Cool to Warm Weather Outfit, Cool Weather Outfit, Cold Weather Outfit, Very Cold Weather Outfit, Bitterly Cold Weather Outfit
+    //outfitList temperature ranges: 70-200, 60-69, 50-59, 45-49, 40-44, 30-39, (-200)-29
     //let feelsDay = -30; //uncomment and change numbers for testing 
     
     let outfits = this.outfits.getOutfitList();
