@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Roboto+Slab&display=swap');
 
-/* root styles: */
-
 
 html {
     box-sizing: border-box;
@@ -11,14 +9,16 @@ html {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    /* Use 600 weight Open Sans throughout */
+    font-family: 'Open Sans', sans-serif; 
     color: #1e272e; 
+    margin-top: 0px;
 }
 
 .wrapper {
     max-width: 600px;
     margin: auto;
-    padding: 10px;
+    padding: 0px 8px; 
 }
 
 img {
@@ -62,19 +62,10 @@ h1, h2 {
     grid-column: 1 / 1;
 }
 
-/* .header > div::before,
 .header > div > img {
-    grid-area: 1 / 1 / 2 / 2;
-} */
-
-.header > div > img {
-    /* object-fit: cover; */
-    /* width: 100%; */
     max-width: 100%;
     height: auto;
-    /* max-height: 100%; */
     object-fit: contain;
-    /* object-fit: scale-down; */
 }
 
 #conditions,
@@ -89,7 +80,6 @@ h1, h2 {
 
 #title {
     grid-area: title;
-    /* text-align: center; */
 }
 
 #subtitle {
@@ -98,75 +88,42 @@ h1, h2 {
 
 #date {
     grid-area: date;
-    /* text-align: center; */
 }
 
 .temp {
-    /* set the temp numeral to be larger but responsive */
+    /* set the temp numeral to be responsively larger */
     font-size: 10vw;
     font-family: 'Roboto Slab', serif;
 }
 
 #conditions {
     grid-area: conditions;
-    /* max-width: 150px; */
-    /* text-align: center; */
 }
 
 #hilow {
     grid-area: hilow;
-    /* text-align: center; */
 }
 
 /* ul is parent grid for clothing items in li. */
 ul {
     padding: 0;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
     list-style-type: none;
     display: grid;
     justify-content: center;
-    /* 3 columns of same width: */
-    /* grid-template-columns: 200px 200px 200px;  this made the grid overflow the screen on mobile devices*/
+    /* 3 columns of same responsive width: */
     grid-template-columns: 1fr 1fr 1fr;
-    /* change row height as needed, may not want auto */
     grid-template-rows: repeat(3, auto);
     grid-gap: 1em;
-
-
-
-
-
-    /* display: flex;
-    flex-wrap: wrap;  removed flex*/
-
 }
 
+/* li class name */
+.pic {
+    max-width: 200px; 
+} 
 
-/* .outfit div {
-    padding: 0 0.5em;
-}
-
-#outfit li > p {
-    text-align: center;
-} */
-
-li {
-    
-
-    /* margin-top: 50px; */
-    /* margin-bottom: 50px; */
-    /* padding-bottom: 50px; */
-
-    /* display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    vertical-align: top; */
-    /* relative position so hidden pic can be absolutely positioned */
-    /* position: relative; */
-}
-
-/* complete outfit pic: */
+/* complete outfit pic, no animation: */
 li:first-child {
     grid-row-start: 1;
     grid-row-end: 5;
@@ -174,91 +131,46 @@ li:first-child {
     pointer-events: none;
 }
 
-/* containing div inside each li */
-.pic {
-    max-width: 200px; 
-    /* transition: all .2s ease-in-out; */
-    /* position: relative; */
-} 
-
+/* li animations for individual clothing items */
 .highlight {
-    /* transition: all .2s ease-in-out; */
-    /* transform: scale(1.25); */
-    /* animation-duration: 3s;
-    animation-name: highlight; */
-    animation: highlight 2s, color 1s;
-    /* background-color: #d2dae2; */
+    animation: highlight .75s, color .75s;
     color: #3c40c6;
-    /* font-size: 1.1em; */
 }
 
 @keyframes highlight {
     0% { transform: scale(1.0, 1.0); }
     5% { transform: scale(1.15, 1.15); }
-    /* 10% { transform: scale(1.5, 1.5); }
-    90% { transform: scale(1.5, 1.5); } */
+    10% { transform: scale(1.2, 1.2); }
+    90% { transform: scale(1.2, 1.2); }
     95% { transform: scale(1.15, 1.15); }
     100% { transform: scale(1.0, 1.0); }
 }
 
 @keyframes color {
-    /* changing font-size is warping the grid, don't do it */
-    from {color: #3c40c6;} 
-    to {color: #7fa191;}
+    /* changing font-size warps the grid, don't do it */
+    from {color: #f53b57;} 
+    to {color: #3c40c6;}
 }   
 
-/* .pic:hover {
-    transform: scale(1.25);
-} */
-
 /* class for clothing images div*/
-.clothing > img {
-    
-    /* change this to final size after testing */
-    /* max-width: 200px;  */
-    /* position: relative; */
+.clothing > img {    
     max-width: 100%;
     height: auto;
     object-fit: contain;
 }
 
-/* .outfit li > img {
-    max-width: 20px;
-} */
-
 /* class for clothing items text */
 .name {
     display: block;
     text-align: center;
-    background-color: white;
     padding-top: 0px;
-    /* font-weight: 600; */
-    transform: translateY(-15px);
-    /* transition: all .2s ease-in-out; */
-    /* position: absolute;
-    bottom: -10px;
-    margin: auto;  */
-    /* left: 50%; */
+    /* position text closer to image: */
+    transform: translateY(-15px);    
 }
-
-/* .name:hover {
-    transform: scale(1.25);
-} */
-
-/* .name > p {
-    padding-top: 0px;
-} */
-
-/* to hide the clothing caption  */
- .hidden {
-    display: none;
-}
-
-
-
 
 /* styles to accomodate larger devices */
 @media all and (min-width:601px) {
+    /* prevent temp numeral from endlessly getting larger with vw */
     .temp {
         font-size: 110px;
     }
