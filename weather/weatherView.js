@@ -5,9 +5,7 @@
   export default class WeatherView {
     //display weather info in the header
     renderWeather(daily, current, weatherElement, icon, arrow) {
-        console.log("in renderWeather", daily, current, weatherElement, icon, arrow); 
-        
-        //date/temp infor 
+        //date-temp info
         let date = new Date();
         let currentTemp = Math.round(current.temp);
         let feelsDay = Math.round(daily[0].feels_like.day);

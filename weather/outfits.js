@@ -145,12 +145,10 @@ const clothesList = [
     
     export default class Outfits {
       //some functions to return the arrays
-      getOutfitList() {
-        console.log('in getOutfitList');  
+      getOutfitList() {  
         return outfitList;
       }
       getClothesList() {
-        console.log('in getClothesList');
         return clothesList;
       } 
     }    

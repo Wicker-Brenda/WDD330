@@ -86,6 +86,8 @@ export class WeatherController {
         let item = clothes.find(clothesItem => clothesItem.name === "Umbrella");
         currentClothing.push(item);
     } 
+
+    console.log(currentOutfit, currentClothing);
     
     //pass in currentOutfit and currentClothing to the view
     this.weatherView.renderOutfit(parentElement, currentOutfit, currentClothing); 
@@ -103,6 +105,7 @@ export class WeatherController {
         this.highlightItem(e.currentTarget); 
       });
       child.addEventListener('webkitAnimationEnd', removeClass); 
+      child.addEventListener('animationend', removeClass);
     });
   }
   

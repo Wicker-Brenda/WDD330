@@ -32,12 +32,20 @@ h1, h2 {
     font-family: 'Roboto Slab', serif;
 }
 
+h1 {
+    margin-block-end: 0.55em;
+}
+
+h2 {
+    margin-block-start: 0.0em;
+    margin-block-end: 0.67em;
+}
+
 /* make parent grid for header */
 .header {
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
-    /* grid-template-rows: repeat(3, auto); */
     grid-gap: 1em;
     align-items: stretch;
     grid-template-areas: "title title title"
@@ -48,7 +56,6 @@ h1, h2 {
 .header > div {
     text-align: center;
     max-width: 100%;
-    /* display: grid; */
     object-fit: scale-down;
 }
 
@@ -56,7 +63,6 @@ h1, h2 {
 .header > div::before {
     content: "";
     padding-bottom: 100%;
-    /* display: block; */
     width: 0;
     grid-row: 1 / 1;
     grid-column: 1 / 1;
@@ -66,6 +72,11 @@ h1, h2 {
     max-width: 100%;
     height: auto;
     object-fit: contain;
+}
+
+.header > div > p {
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
 }
 
 #conditions,
@@ -170,6 +181,14 @@ li:first-child {
 
 /* styles to accomodate larger devices */
 @media all and (min-width:601px) {
+    h2 {
+        margin-block-start: 0.67em;
+    }
+    
+    .header > div > p {
+        margin-block-start: 0.75em;
+    }
+
     /* prevent temp numeral from endlessly getting larger with vw */
     .temp {
         font-size: 110px;
