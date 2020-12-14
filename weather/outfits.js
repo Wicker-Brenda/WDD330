@@ -89,7 +89,7 @@ const clothesList = [
         imgAlt: "Image of mild weather outfit",
         clothing: ["Short Sleeves", "Pants", "Sandals"],
         lowTemp: 60,
-        highTemp: 69 
+        highTemp: 70 
       },      
       {
         //pic will include long sleeves, pants, socks and shoes
@@ -99,7 +99,7 @@ const clothesList = [
         imgAlt: "Image of cool weather outfit",
         clothing: ["Long Sleeves", "Pants", "Socks", "Sneakers"],
         lowTemp: 50,
-        highTemp: 59 
+        highTemp: 60 
       },
       {
         //pic will include short sleeves, pants, socks and shoes, light jacket
@@ -109,7 +109,7 @@ const clothesList = [
         imgAlt: "Image of cool to warm weather outfit",
         clothing: ["Short Sleeves", "Pants", "Socks", "Sneakers", "Light Jacket"],
         lowTemp: 45,
-        highTemp: 69 
+        highTemp: 70 
       },
       {
         //pic will include long sleeves, pants, socks and shoes, light jacket
@@ -119,7 +119,7 @@ const clothesList = [
         imgAlt: "Image of cold weather outfit",
         clothing: ["Long Sleeves", "Pants", "Socks", "Sneakers", "Light Jacket"],
         lowTemp: 40,
-        highTemp: 49      
+        highTemp: 50      
       },
       {
         //pic will include long sleeves, pants, socks and shoes, coat
@@ -129,7 +129,7 @@ const clothesList = [
         imgAlt: "Image of very cold weather outfit",
         clothing: ["Long Sleeves", "Pants", "Socks", "Sneakers", "Coat"],
         lowTemp: 30,
-        highTemp: 39 
+        highTemp: 40 
       },
       {
         //pic will include long sleeves, pants, socks and shoes, coat, hat, scarf, gloves/mittens
@@ -139,7 +139,7 @@ const clothesList = [
         imgAlt: "Image of bitterly cold weather outfit",
         clothing: ["Long Sleeves", "Pants", "Socks", "Sneakers", "Coat", "Hat", "Scarf", "Mittens"],
         lowTemp: -200,
-        highTemp: 29 
+        highTemp: 30 
       }    
     ];
     
